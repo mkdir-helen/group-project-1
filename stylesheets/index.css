@@ -14,5 +14,52 @@ body {
 	width: 100%;
 	height: 100%;
 	font-family: 'Belgrano', serif;
-	
+}
+
+.header {
+	margin: auto;
+	width: 60%;
+	height: 15%;
+	background-color: rgba(0, 0, 255, .5);
+	border-radius: 20px;
+}
+
+h1,
+p {
+	color: white;
+	text-align: center;
+}
+
+h1 {
+	padding-top: 15px;
+}
+
+.imagecontainer {
+	/* flex-direction: row; */
+	margin: 0px auto;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	height: 100%;
+	width: 60%;
+	outline: 1px solid yellow;
+	margin-bottom: 20px;
+}
+
+.thumbnail {
+	margin: 10px 10px 0px 10px;
+	/* display: inline-block; */
+	height: auto;
+	width: 50%;
+	outline: 1px solid white;
+	margin-bottom: 20px;
+	color: rgba(255, 255, 255, .5);
+}
+
+footer {
+	height: 10%;
+	width: 100%;
+	color: white;
+	text-align: center;
+	background-color: rgba(0, 0, 255, .5);
 }
