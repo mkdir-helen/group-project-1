@@ -36,24 +36,48 @@ h1 {
 
 .imagecontainer {
 	/* flex-direction: row; */
-	margin: 0px auto;
+	/* margin: 0px auto;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
 	height: 100%;
 	width: 60%;
 	outline: 1px solid yellow;
+	margin-bottom: 20px; */
+}
+
+img {
+	/* margin: 10px 10px 0px 10px; */
+	/* display: inline-block; */
+	/* height: 20%; */
+	/* width: 10%; */
+	/* outline: 1px solid white;
 	margin-bottom: 20px;
+	color: rgba(255, 255, 255, .5); */
+}
+
+.imagecontainer {
+	display: flex;
+	overflow-y: auto;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
 }
 
 .thumbnail {
-	margin: 10px 10px 0px 10px;
-	/* display: inline-block; */
-	height: auto;
-	width: 50%;
-	outline: 1px solid white;
+	padding: 5px;
+	margin: 0px;
+}
+
+img {
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 	margin-bottom: 20px;
-	color: rgba(255, 255, 255, .5);
+	height: 250px;
+	width: 250px;
 }
 
 footer {
