@@ -59,8 +59,13 @@ function retrieve(data) {
                 // newQ.textContent = (`Your secret wish is ${data[i].secret_wish[0]}.`);
                 // // console.log(newP);
                 // dataModal.appendChild(newQ);
-                // dataModal.remove(modal - hidden);
+                dataModal.classList.remove('modal-hidden');
             }
         })
     }
 }
+
+dataModal.addEventListener('click', function () {
+    // console.log('iber');
+    dataModal.classList.add('modal-hidden');
+});
