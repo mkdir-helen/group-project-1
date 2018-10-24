@@ -14,7 +14,12 @@ const images = ["images/aries.jpg",
     "images/aquarius.jpg",
     "images/pisces.jpg"];
 
-thumbnail.addEventListener('click', function (event) {
-    event.target.
-        console.log("hello");
-});
+
+// console.log(thumbnail.length);
+for (let i = 0; i < thumbnail.length; i++) {
+    // console.log('hello');
+    thumbnail[i].addEventListener('click', function () {
+        // to do shit;
+        // dataModal.remove(modal - hidden);
+    });
+};
