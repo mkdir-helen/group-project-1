@@ -83,7 +83,7 @@ footer {
 	justify-content: center;
 	align-items: center;
 	transition: all 200ms ease-in-out;
-	outline: 1px solid red;
+	outline: 1px solid purple;
 	color: white;
 }
 
