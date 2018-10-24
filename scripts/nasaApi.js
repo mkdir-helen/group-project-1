@@ -7,3 +7,24 @@ const nasa = {
     "title": "Hyperion: Largest Known Galaxy Proto-Supercluster",
     "url": "https://apod.nasa.gov/apod/image/1810/HyperionGalaxies_ESO_1080.jpg"
 }
+
+function getPhotoOnBackground() {
+    document.body.style.backgroundImage = `url(${nasa.url})`;
+}
+getPhotoOnBackground();
+
+// ============================
+// Promise Chain and Fetch
+// ============================
+// function getBackgroundPhoto() {
+//     fetch('https://api.nasa.gov/planetary/apod?api_key=NsOJtsgXZf2MCfrnp0agtJ0Kr1w3xPcZVLMWM3Hq')
+//     .then(response => response.json())
+//     .then(data => data.url)
+//     .then(appendImageToBody)
+// }
+// getBackgroundPhoto();
+
+// function appendImageToBody(image) {
+//     document.body.style.backgroundImage = `url(${image})`;
+    
+// }
