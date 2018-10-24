@@ -14,6 +14,7 @@ body {
 	width: 100%;
 	height: 100%;
 	font-family: 'Belgrano', serif;
+	background-attachment: fixed;
 }
 
 h1, p {
@@ -25,7 +26,7 @@ h1, p {
 	margin-left: 10px;
 	margin-right: 10px;
 }
- 
+
 p {
 	padding: 20px;
 }
@@ -68,7 +69,11 @@ footer {
 	color: white;
 	background-color: rgba(0, 0, 255, .5);
 	z-index: 1;
-	font-size: 12px;
+	font-size: 10px;
+}
+
+/* @media only screen and (min-width: 360px) {
+
 }
 
 @media only screen and (min-width: 768px) {
@@ -80,3 +85,7 @@ footer {
 			font-size: 20px;
 		}
 } 
+
+@media only screen and (min-width: 1200px) {
+
+} */
