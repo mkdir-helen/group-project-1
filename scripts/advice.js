@@ -10,6 +10,6 @@
 function adviceSlip() {
     fetch('http://api.adviceslip.com/advice')
         .then(response => response.json())
-        .then(data => console.log(data.slip.advice))
+        .then(data => data.slip.advice)
 }
 adviceSlip();
