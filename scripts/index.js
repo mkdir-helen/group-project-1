@@ -61,7 +61,7 @@ function retrieve(data) {
                     modalContents.appendChild(newP);
                 }
                 let closeButton = document.createElement('button');
-                closeButton.textContent = 'close';
+                closeButton.textContent = 'Close';
                 closeButton.setAttribute('id', 'close');
                 modalContents.appendChild(closeButton);
                 dataModal.classList.remove('modal-hidden');

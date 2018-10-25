@@ -13,7 +13,6 @@ body {
 	height: 0;
 	width: 100%;
 	height: 100%;
-	font-family: 'Belgrano', serif;
 	background-attachment: fixed;
 	font-family: 'Srisakdi', cursive;
 }
@@ -91,7 +90,7 @@ footer {
 	width: 80%;
 	left: 10%;
 	height: 400px;
-	background-color: rgba(0,0,0,0.7);
+	background-color: rgba(0,0,0,0.85);
 	align-items: center;
 	text-align: center;
 	transition: all 200ms ease-in-out;
@@ -99,11 +98,12 @@ footer {
 	border-radius: 5px;
 	flex-direction: column;
 	overflow-x: hidden;
-	outline: 1px solid red;
+	border: 3px solid rgba(247,154,65, 0.9);;
+	/* box-shadow: 5px 5px 5px  black; */
 }
 .modal {
 	position: absolute;
-	outline: 2px solid orange;
+	/* outline: 2px solid orange; */
 	text-align: center;
 	top: 10%;
 	width: 100%;
@@ -123,11 +123,13 @@ h2 {
 	-moz-border-radius: 50%;
 	-ms-border-radius: 50%;
 	-o-border-radius: 50%;
+	letter-spacing: 3px;
 }
 
 .pretty_title{
 	text-decoration: underline;
 	font-family: 'Srisakdi', cursive;
+
 }
 
 .modalContents > p {
@@ -139,7 +141,7 @@ h2 {
 	padding: 10px;
 	margin-left: 10px;
 	margin-right: 10px;
-	border: 1px solid rgba(247,154,65, 0.9);;
+	border: 1px solid rgba(247,154,65, 0.9);
 	max-width: 100%;
 	max-height: 100%;
 	/* font-family: 'Crimson Text', serif; */
@@ -155,6 +157,7 @@ button {
 	color: white;
 	z-index: 10;
 	margin-bottom: 20px;
+	font-family: 'Srisakdi', cursive;
 }
 
 textarea {
@@ -181,6 +184,19 @@ textarea {
 	.caption {
 		padding: 0 1px;
 	}
+	.pretty_title {
+		font-size: 1.25em;
+	}
+	p {
+		font-size: 18px;
+	}
+	h2 {
+		font-size: 2.5em;
+		margin-bottom: 7%;
+	}
+	button {
+		font-size: 1em;
+	}
 }
 
 @media only screen and (min-width: 768px) {
@@ -191,12 +207,40 @@ textarea {
 		.caption {
 			font-size: 15px;
 		}
+		.modalContents {
+			height: 420px;
+			width: 82%;
+			left: 9%;
+			top: 20%;
+		}
+		h1 {
+			font-size: 2.8em;
+		}
+		h4 {
+			font-size: 1.5em;
+		}
 }
 
 @media only screen and (min-width: 1200px) {
 	img {
 		height: 250px;
 		width: 250px;
+	}
+	.modalContents {
+		height: 480px;
+	}
+	h2 {
+		margin-bottom: 5%;
+		margin-top: 3%;
+		font-size: 3em;
+	}
+	p {
+		font-size: 1.5em
+	}
+	button {
+		font-size: 1.5em;
+		margin-bottom: 25px;
+		border: 1px solid rgba(247,154,65, 0.9);
 	}
 }
 
