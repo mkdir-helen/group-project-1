@@ -1,3 +1,4 @@
+
 const astro_url = "http://my-little-cors-proxy.herokuapp.com/https://zodiacal.herokuapp.com/api";
 
 function zodiacData() {
