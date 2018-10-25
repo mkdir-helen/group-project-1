@@ -1,6 +1,7 @@
 const dataContainer = document.querySelector('[data-container]');
 const dataModal = document.querySelector('[data-modal]');
 const thumbnail = document.querySelectorAll('.thumbnail');
+const modalContents = document.querySelector('[data-modal-contents]');
 const images = [
     "images/aries.jpg",
     "images/taurus.jpg",
@@ -41,7 +42,7 @@ function retrieve(data) {
     for (let i = 0; i < thumbnail.length; i++) {
         thumbnail[i].addEventListener('click', function () {
             if (data[i].name) {
-                dataModal.innerHTML = '';
+                modalContents.innerHTML = '';
                 let elements = [data[i].mental_traits[0], data[i].secret_wish, data[i].vibe,
                 data[i].physical_traits[0], data[i].element, data[i].famous_people[0], data[i].hates[0],
                 data[i]['compatibility']];
@@ -49,7 +50,7 @@ function retrieve(data) {
                 elements.forEach(function (stuff) {
                     let newP = document.createElement('p');
                     newP.textContent = stuff;
-                    dataModal.appendChild(newP);
+                    modalContents.appendChild(newP);
 
                 })
                 // console.log(data[i].mental_traits[0]);
