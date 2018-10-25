@@ -15,6 +15,7 @@ body {
 	height: 100%;
 	font-family: 'Belgrano', serif;
 	background-attachment: fixed;
+	font-family: 'Srisakdi', cursive;
 }
 
 h1, h4 {
@@ -29,6 +30,7 @@ h1, h4 {
 
 h4 {
 	padding: 20px;
+	font-family: fantasy;
 }
 
 
@@ -80,9 +82,10 @@ footer {
 	width: 80%;
 	left: 10%;
 	top: 20%;
-	height: 1000px;
+	height: 700px;
 	background-color: rgba(0,0,0,0.7);
 	align-items: center;
+	text-align: center;
 	transition: all 200ms ease-in-out;
 	color: white;
 	border-radius: 5px;
@@ -98,6 +101,25 @@ footer {
 	/* overflow: hidden; */
 	
 }
+
+h2 {
+	font-size: 3em;
+	margin: 5%;
+	background-color:rgb(118, 35, 118);
+	width: 10%;
+	height: 10%;
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	-ms-border-radius: 50%;
+	-o-border-radius: 50%;
+}
+
+.pretty_title{
+	text-decoration: underline;
+	font-family: 'Srisakdi', cursive;
+}
+
 .modalContents > p {
 	color: white;
 	text-align: center;
@@ -108,7 +130,13 @@ footer {
 	margin-left: 10px;
 	margin-right: 10px;
 	border: 1px solid rgba(255, 255, 255, 0.4);
+	max-width: 100%;
+	max-height: 100%;
+	/* font-family: 'Crimson Text', serif; */
+	font-family: fantasy;
 } 
+
+
 
 .close-button {
 	position: absolute;
