@@ -1,7 +1,8 @@
 const dataContainer = document.querySelector('[data-container]');
 const dataModal = document.querySelector('[data-modal]');
 const thumbnail = document.querySelectorAll('.thumbnail');
-const images = ["images/aries.jpg",
+const images = [
+    "images/aries.jpg",
     "images/taurus.jpg",
     "images/gemini.jpg",
     "images/cancer.jpg",
@@ -12,7 +13,8 @@ const images = ["images/aries.jpg",
     "images/sagittarius.jpg",
     "images/capricorn.jpg",
     "images/aquarius.jpg",
-    "images/pisces.jpg"];
+    "images/pisces.jpg"
+];
 
 const astro_url = "http://my-little-cors-proxy.herokuapp.com/https://zodiacal.herokuapp.com/api";
 
@@ -20,22 +22,20 @@ function zodiacData() {
     fetch(astro_url)
         .then(r => r.json())
         .then(cacheData)
-        .then(doStuff)
+        // .then(doStuff)
         .then(retrieve)
 }
 
 function cacheData(data) {
-    //store data
     return data;
 }
 
-function doStuff(data) {
-    console.log(data);
-    return data;
-}
+// function doStuff(data) {
+//     console.log(data);
+//     return data;
+// }
 
 zodiacData();
-
 
 function retrieve(data) {
     for (let i = 0; i < thumbnail.length; i++) {
@@ -66,6 +66,5 @@ function retrieve(data) {
 }
 
 dataModal.addEventListener('click', function () {
-    // console.log('iber');
     dataModal.classList.add('modal-hidden');
 });
