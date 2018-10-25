@@ -43,16 +43,35 @@ function retrieve(data) {
         thumbnail[i].addEventListener('click', function () {
             if (data[i].name) {
                 modalContents.innerHTML = '';
-                let elements = [data[i].mental_traits[0], data[i].secret_wish, data[i].vibe,
-                data[i].physical_traits[0], data[i].element, data[i].famous_people[0], data[i].hates[0],
+                let titles = ['Element','Mental Traits', 'Physical Traits', 'Famous People', 'Secret Wish', 'Vibe',  
+             'Hates', 'Compatibility']
+                let elements = [data[i].element, data[i].mental_traits[0], data[i].physical_traits[0], data[i].famous_people[0], data[i].secret_wish, data[i].vibe,
+                   data[i].hates[0],
                 data[i]['compatibility']];
-
-                elements.forEach(function (stuff) {
+                
+                let newH = document.createElement('h2');
+                newH.textContent = data[i].name;
+                modalContents.appendChild(newH);
+                for(let i=0; i<titles.length; i++){
+                    let title = titles[i];
+                    let element = elements[i];
                     let newP = document.createElement('p');
-                    newP.textContent = stuff;
+                    newP.innerHTML = '<span class="pretty_title"><strong>'+ title +'</strong></span>' + '<br>' + element;
                     modalContents.appendChild(newP);
+                }
 
-                })
+                // titles.forEach(function(title){
+                //     let newH = document.createElement('h1');
+                //     newH.innerHTML = title;
+                //     modalContents.appendChild(newH);  
+                // })
+                // elements.forEach(function (stuff) {
+                //     let newP = document.createElement('p');
+                //     newP.innerHTML = stuff;
+                //     modalContents.appendChild(newP);
+                    
+                // })
+                
                 // console.log(data[i].mental_traits[0]);
                 // let newP = document.createElement('p');
                 // let newQ = document.createElement('p');
