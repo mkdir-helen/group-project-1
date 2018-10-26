@@ -46,6 +46,7 @@ ZODIAC TILES
 	justify-content: space-around;
 	align-items: center;
 	margin-top: 30px;
+	max-width: 1399px;
 }
 
 .thumbnail {
@@ -89,7 +90,8 @@ footer {
 	top: 15%;
 	width: 80%;
 	left: 10%;
-	height: 400px;
+	/* height: 400px; */
+	height: 70%;
 	background-color: rgba(0,0,0,0.85);
 	align-items: center;
 	text-align: center;
@@ -208,7 +210,8 @@ textarea {
 			font-size: 15px;
 		}
 		.modalContents {
-			height: 420px;
+			/* height: 420px; */
+			/* height: 70%; */
 			width: 82%;
 			left: 9%;
 			top: 20%;
@@ -221,14 +224,14 @@ textarea {
 		}
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1020px) {
 	img {
 		height: 250px;
 		width: 250px;
 	}
-	.modalContents {
-		height: 480px;
-	}
+	/* .modalContents {
+		height: 700px;
+	} */
 	h2 {
 		margin-bottom: 5%;
 		margin-top: 3%;
@@ -241,6 +244,15 @@ textarea {
 		font-size: 1.5em;
 		margin-bottom: 25px;
 		border: 1px solid rgba(247,154,65, 0.9);
+	}
+	.caption {
+		font-size: 20px;
+	}
+}
+
+@media only screen and (min-width: 1399px) {
+	.imagecontainer {
+		margin:auto;
 	}
 }
 
