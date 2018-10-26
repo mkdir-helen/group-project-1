@@ -32,10 +32,6 @@ function cacheData(data) {
     return data;
 }
 
-// function doStuff(data) {
-//     console.log(data);
-//     return data;
-// }
 
 zodiacData();
 
@@ -60,10 +56,10 @@ function retrieve(data) {
                     newP.innerHTML = '<span class="pretty_title"><strong>' + title + '</strong></span>' + '<br>' + element;
                     modalContents.appendChild(newP);
                 }
-                let closeButton = document.createElement('button');
-                closeButton.textContent = 'Close';
-                closeButton.setAttribute('id', 'close');
-                modalContents.appendChild(closeButton);
+                // let closeButton = document.createElement('button');
+                // closeButton.textContent = 'Close';
+                // closeButton.setAttribute('id', 'close');
+                // dataModal.appendChild(closeButton);
                 dataModal.classList.remove('modal-hidden');
                 closeButton.addEventListener('click', function () {
                     dataModal.classList.add('modal-hidden');
@@ -72,3 +68,21 @@ function retrieve(data) {
         })
     }
 }
+
+window.addEventListener('keydown', (event) => {
+    // key: "Escape"
+    // keyCode: 27
+    if (this.event.keyCode === 27) {
+        if(dataModal.classList.contains('modal-hidden') === false){
+            dataModal.classList.add('modal-hidden');
+          };
+    }
+});
+
+                // closeButton.textContent = 'Close';
+                // closeButton.setAttribute('id', 'close');
+                // dataModal.appendChild(closeButton);
+                // dataModal.classList.remove('modal-hidden');
+                // closeButton.addEventListener('click', function () {
+                //     dataModal.classList.add('modal-hidden');
+                // });

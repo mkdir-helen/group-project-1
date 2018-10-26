@@ -86,7 +86,6 @@ footer {
 
 .modalContents {
 	/* position: -webkit-sticky;  */
-	position: fixed;
 	top: 15%;
 	width: 80%;
 	left: 10%;
@@ -95,16 +94,18 @@ footer {
 	background-color: rgba(0,0,0,0.85);
 	align-items: center;
 	text-align: center;
-	transition: all 200ms ease-in-out;
 	color: white;
 	border-radius: 5px;
 	flex-direction: column;
 	overflow-x: hidden;
 	border: 3px solid rgba(247,154,65, 0.9);;
 	/* box-shadow: 5px 5px 5px  black; */
+	margin: auto;
 }
 .modal {
-	position: absolute;
+	position: fixed;
+	/* position: absolute; */
+	transition: all 200ms ease-in-out;
 	/* outline: 2px solid orange; */
 	text-align: center;
 	top: 10%;
@@ -153,14 +154,22 @@ h2 {
 
 
 button {
-	border: none;
+	/* border: none; */
 	background: rgb(118, 35, 118);
+	border: 1px solid rgba(247,154,65, 0.9);
 	border-radius: 5px;
 	color: white;
 	z-index: 10;
-	margin-bottom: 20px;
+	margin-top: 20px;
 	font-family: 'Srisakdi', cursive;
 }
+
+button:hover, button: active{
+	/* background: rgba(247,154,65, 0.9); 
+	 */
+	 background: gold;
+}
+
 
 textarea {
 	background-color: rgba(0, 0, 255, .5);
