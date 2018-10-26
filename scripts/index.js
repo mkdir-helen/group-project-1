@@ -6,56 +6,65 @@ const dataModal = document.querySelector('[data-modal]');
 const thumbnail = document.querySelectorAll('.thumbnail');
 const modalContents = document.querySelector('[data-modal-contents]');
 const closeButton = document.querySelector('#close');
-
+const modalHeader = document.createElement('div');
 
 // ==========
 // API Urls's
 // ==========
 const astroUrl = 'http://my-little-cors-proxy.herokuapp.com/https://zodiacal.herokuapp.com/api';
 const nasaApi = 'https://api.nasa.gov/planetary/apod?api_key=NsOJtsgXZf2MCfrnp0agtJ0Kr1w3xPcZVLMWM3Hq';
+const adviceApi = 'http://api.adviceslip.com/advice';
 
 // =============
 // Fetched API's
 // =============
-let fetchedNasaApi = fetch('https://api.nasa.gov/planetary/apod?api_key=NsOJtsgXZf2MCfrnp0agtJ0Kr1w3xPcZVLMWM3Hq')
+let fetchedNasaApi = fetch('https://api.nasa.gov/planetary/apod?api_key=NsOJtsgXZf2MCfrnp0agtJ0Kr1w3xPcZVLMWM3Hq');
 let fetchedAstroUrl = fetch('http://my-little-cors-proxy.herokuapp.com/https://zodiacal.herokuapp.com/api');
+let fetchedAdviceApi = fetch('http://api.adviceslip.com/advice');
 
 // ==========================================================
 // Triggers Promise and Converts Both Fetched Api's Into JSON
 // ==========================================================
-Promise.all([fetchedNasaApi, fetchedAstroUrl])
-.then((resolvedPData) => {
-    let jsonArray = resolvedPData.map(eachP => {
-          return eachP.json();
+Promise.all([fetchedNasaApi, fetchedAstroUrl, fetchedAdviceApi])
+    .then((resolvedPData) => {
+        let jsonArray = resolvedPData.map(eachP => {
+            return eachP.json();
+        })
+        return Promise.all(jsonArray);
     })
-    return Promise.all(jsonArray);
-})
 
+    // ===================================
+    // Returns Modified Values In An Array
+    // ===================================
+    .then((jsonArray) => {
+        return [jsonArray[1], jsonArray[0].url, jsonArray[2].slip.advice];
+    })
 
-// ===================================
-// Returns Modified Values In An Array
-// ===================================
-.then((jsonArray) => {
-    return [jsonArray[1], jsonArray[0].url];   
-})
-
-
-// =================================================================================================
-// Triggers Function Calls To Get Background Image Appended and Major DOM Manipulation Functionality
-// =================================================================================================
-.then((bothPromises) => {
-    appendImageToBody(bothPromises[1]);
-    retrieve(bothPromises[0]);
-
-})
+    // =================================================================================================
+    // Triggers Function Calls To Get Background Image Appended and Major DOM Manipulation Functionality
+    // =================================================================================================
+    .then((bothPromises) => {
+        appendImageToBody(bothPromises[1]);
+        retrieve(bothPromises[0]);
+        adviceModal(bothPromises[2]);
+    })
 
 // ==============================================
 // Function That Appends Background Image To Body
 // ==============================================
 function appendImageToBody(image) {
     document.body.style.backgroundImage = `url(${image})`;
-        
- }
+}
+
+// ================================================
+// Function That Appends Advice Box To Modal Header
+// ================================================
+function adviceModal(input) {
+    const advice = document.createElement('p');
+    advice.innerHTML = '<span class="pretty_title"><strong>' + 'Your Lucky Advice' + '</strong></span>' + '<br>' + input;
+    advice.setAttribute('class', 'advice');
+    modalHeader.appendChild(advice);
+}
 
 // =================================================
 // Function For Major Dom Manipulation Functionality
@@ -73,27 +82,31 @@ function retrieve(data) {
 
                 // Each time through the loop we reset the inner.html
                 modalContents.innerHTML = '';
- 
-              // Creates an array with the elements traits
-                let titles = ['Element', 
-                              'Mental Traits', 
-                              'Physical Traits', 
-                              'Famous People', 
-                              'Secret Wish', 
-                              'Vibe',
-                              'Hates', 
-                              'Compatibility'];
+
+                // Creates an array with the elements traits
+                let titles = ['Element',
+                    'Mental Traits',
+                    'Physical Traits',
+                    'Famous People',
+                    'Secret Wish',
+                    'Vibe',
+                    'Hates',
+                    'Compatibility'];
 
                 // Creates an array with the targeted data structures astrological traits
-                let elements = [data[i].element, 
-                                data[i].mental_traits[0], 
-                                data[i].physical_traits[0], 
-                                data[i].famous_people[0], 
-                                data[i].secret_wish, 
-                                data[i].vibe,
-                                data[i].hates[0],
-                                // Compatibility was an object not an array
-                                data[i]['compatibility']];
+                let elements = [data[i].element,
+                data[i].mental_traits[0],
+                data[i].physical_traits[0],
+                data[i].famous_people[0],
+                data[i].secret_wish,
+                data[i].vibe,
+                data[i].hates[0],
+                // Compatibility was an object not an array
+                data[i]['compatibility']];
+
+                // Creates a header to hold the header and advice slip
+                modalHeader.setAttribute('class', 'modalHeader');
+                modalContents.appendChild(modalHeader);
 
                 // Creates a new h2 element to hold the value of the name of the astrological sign
                 let newH = document.createElement('h2');
@@ -101,8 +114,8 @@ function retrieve(data) {
                 // Sets the h2 element to contain our the name of our astrological sign
                 newH.textContent = data[i].name;
 
-                // Appends the name of our astrological sign to our container
-                modalContents.appendChild(newH);
+                // Appends the name of our astrological sign to the header
+                modalHeader.appendChild(newH);
 
                 // Loops through our titles/astrological traits
                 for (let i = 0; i < titles.length; i++) {
@@ -134,7 +147,6 @@ function retrieve(data) {
 
                     // Resets class name for close button
                     this.className = '';
-                  
                 });
 
                 // Checks if current image clicked is at index 0, 4, or 8 to set to fire sign
@@ -178,6 +190,9 @@ function retrieve(data) {
     }
 }
 
+// =================================================
+// Function For Escape Key To Re-Hide Modal Element
+// =================================================
 // Adds an event listener to to see what key stroke the use presses
 window.addEventListener('keydown', (event) => {
     // key: "Escape"
