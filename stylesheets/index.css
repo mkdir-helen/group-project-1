@@ -35,6 +35,29 @@ h4 {
 	padding: 20px;
 	font-family: fantasy;
 }
+
+/* 
+==================================
+ELEMENT COLORS
+=================================== */
+
+.fire{
+	background-color: rgba(236, 72, 39, 0.9);
+}
+.air{
+	background-color: rgba(107, 234, 251, 0.9);
+}
+.earth{
+	background-color: rgba(240,165,80,0.9);
+}
+/* button.earth{
+	border: 2px solid rgba(250, 224, 200, 0.9);
+} */
+.water{
+	background-color: rgba(26,50,121, 0.9);	
+}
+
+
 /* 
 ==================================
 ZODIAC TILES
@@ -98,7 +121,7 @@ footer {
 	border-radius: 5px;
 	flex-direction: column;
 	overflow-x: hidden;
-	border: 3px solid rgba(247,154,65, 0.9);;
+	border: 3px solid rgba(247,154,65, 0.9);
 	/* box-shadow: 5px 5px 5px  black; */
 	margin: auto;
 }
@@ -156,7 +179,7 @@ h2 {
 button {
 	/* border: none; */
 	background: rgb(118, 35, 118);
-	border: 1px solid rgba(247,154,65, 0.9);
+	border: 2px solid rgba(255, 245, 236, 0.9);
 	border-radius: 5px;
 	color: white;
 	z-index: 10;
@@ -164,10 +187,10 @@ button {
 	font-family: 'Srisakdi', cursive;
 }
 
-button:hover, button: active{
+button:hover, button:active{
 	/* background: rgba(247,154,65, 0.9); 
 	 */
-	 background: gold;
+	 background: black;
 }
 
 

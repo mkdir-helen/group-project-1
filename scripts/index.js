@@ -22,10 +22,10 @@ const astro_url = "http://my-little-cors-proxy.herokuapp.com/https://zodiacal.he
 
 function zodiacData() {
     fetch(astro_url)
-        .then(r => r.json())
-        .then(cacheData)
-        // .then(doStuff)
-        .then(retrieve)
+    .then(r => r.json())
+    .then(cacheData)
+    // .then(doStuff)
+    .then(retrieve)
 }
 
 function cacheData(data) {
@@ -41,11 +41,10 @@ function retrieve(data) {
             if (data[i].name) {
                 modalContents.innerHTML = '';
                 let titles = ['Element', 'Mental Traits', 'Physical Traits', 'Famous People', 'Secret Wish', 'Vibe',
-                    'Hates', 'Compatibility']
+                'Hates', 'Compatibility']
                 let elements = [data[i].element, data[i].mental_traits[0], data[i].physical_traits[0], data[i].famous_people[0], data[i].secret_wish, data[i].vibe,
                 data[i].hates[0],
                 data[i]['compatibility']];
-
                 let newH = document.createElement('h2');
                 newH.textContent = data[i].name;
                 modalContents.appendChild(newH);
@@ -56,14 +55,28 @@ function retrieve(data) {
                     newP.innerHTML = '<span class="pretty_title"><strong>' + title + '</strong></span>' + '<br>' + element;
                     modalContents.appendChild(newP);
                 }
-                // let closeButton = document.createElement('button');
-                // closeButton.textContent = 'Close';
-                // closeButton.setAttribute('id', 'close');
-                // dataModal.appendChild(closeButton);
                 dataModal.classList.remove('modal-hidden');
                 closeButton.addEventListener('click', function () {
                     dataModal.classList.add('modal-hidden');
+                    this.className = '';
                 });
+                if(i===0 || i===4 || i===8){
+                    //fire
+                    newH.classList.add('fire');
+                    closeButton.classList.add('fire');
+                }else if (i===1 || i===5 || i===9){
+                    //earth
+                    newH.classList.add('earth');
+                    closeButton.classList.add('earth');
+                }else if(i===2 || i===6 || i===10){
+                    //air
+                    newH.classList.add('air');
+                    closeButton.classList.add('air');
+                }else if(i===3 || i===7 || i===11){
+                    //water
+                    newH.classList.add('water');
+                    closeButton.classList.add('water');
+                }
             }
         })
     }
@@ -78,6 +91,10 @@ window.addEventListener('keydown', (event) => {
           };
     }
 });
+
+
+
+
 
                 // closeButton.textContent = 'Close';
                 // closeButton.setAttribute('id', 'close');
