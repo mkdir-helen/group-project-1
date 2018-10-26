@@ -31,7 +31,7 @@ function adviceModal(input) {
     // console.log(advice);
     advice.innerHTML = '<span class="pretty_title"><strong>' + 'Your Lucky Advice' + '</strong></span>' + '<br>' + input;
     advice.setAttribute('class', 'advice');
-    modalContents.appendChild(advice);
+    modalHeader.appendChild(advice);
 }
 
 const astro_url = "http://my-little-cors-proxy.herokuapp.com/https://zodiacal.herokuapp.com/api";
@@ -60,10 +60,12 @@ function retrieve(data) {
                 let elements = [data[i].element, data[i].mental_traits[0], data[i].physical_traits[0], data[i].famous_people[0], data[i].secret_wish, data[i].vibe,
                 data[i].hates[0],
                 data[i]['compatibility']];
-
+                let modalHeader = document.createElement('div');
+                modalHeader.setAttribute('class', 'modalHeader');
+                modalContents.appendChild(modalHeader);
                 let newH = document.createElement('h2');
                 newH.textContent = data[i].name;
-                modalContents.appendChild(newH);
+                modalHeader.appendChild(newH);
                 adviceModal();
                 for (let i = 0; i < titles.length; i++) {
                     let title = titles[i];
@@ -72,19 +74,21 @@ function retrieve(data) {
                     newP.innerHTML = '<span class="pretty_title"><strong>' + title + '</strong></span>' + '<br>' + element;
                     modalContents.appendChild(newP);
                 }
-                let closeButton = document.createElement('button');
-                closeButton.textContent = 'Close';
-                closeButton.setAttribute('id', 'close');
-                modalContents.appendChild(closeButton);
                 dataModal.classList.remove('modal-hidden');
-                closeButton.addEventListener('click', function () {
-                    dataModal.classList.add('modal-hidden');
-                });
+                closeButton.classList.remove(button - hidden);
             }
         })
     }
 }
 
+let closeButton = document.createElement('button');
+closeButton.textContent = 'Close';
+closeButton.setAttribute('id', 'close');
+closeButton.setAttribute('class', 'button button-hidden');
+dataModal.appendChild(closeButton);
+closeButton.addEventListener('click', function () {
+    dataModal.classList.add('modal-hidden');
+});
 window.addEventListener('keydown', function (event) {
     if (event.keyCode === 27) {
         dataModal.classList.add('modal-hidden');

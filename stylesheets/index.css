@@ -167,7 +167,7 @@ button {
 	border-radius: 5px;
 	color: white;
 	z-index: 10;
-	margin-bottom: 20px;
+	/* margin-bottom: 20px; */
 	font-family: 'Srisakdi', cursive;
 }
 
