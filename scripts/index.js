@@ -18,22 +18,6 @@ const images = [
     "images/pisces.jpg"
 ];
 
-function adviceSlip() {
-    fetch('http://api.adviceslip.com/advice')
-        .then(response => response.json())
-        .then(data => data.slip.advice)
-        .then(adviceModal)
-}
-adviceSlip();
-
-const advice = document.createElement('p');
-function adviceModal(input) {
-    // console.log(advice);
-    advice.innerHTML = '<span class="pretty_title"><strong>' + 'Your Lucky Advice' + '</strong></span>' + '<br>' + input;
-    advice.setAttribute('class', 'advice');
-    modalHeader.appendChild(advice);
-}
-
 const astro_url = "http://my-little-cors-proxy.herokuapp.com/https://zodiacal.herokuapp.com/api";
 
 function zodiacData() {
@@ -43,12 +27,17 @@ function zodiacData() {
         // .then(doStuff)
         .then(retrieve)
 }
-zodiacData();
 
 function cacheData(data) {
     return data;
 }
 
+// function doStuff(data) {
+//     console.log(data);
+//     return data;
+// }
+
+zodiacData();
 
 function retrieve(data) {
     for (let i = 0; i < thumbnail.length; i++) {
@@ -60,13 +49,10 @@ function retrieve(data) {
                 let elements = [data[i].element, data[i].mental_traits[0], data[i].physical_traits[0], data[i].famous_people[0], data[i].secret_wish, data[i].vibe,
                 data[i].hates[0],
                 data[i]['compatibility']];
-                let modalHeader = document.createElement('div');
-                modalHeader.setAttribute('class', 'modalHeader');
-                modalContents.appendChild(modalHeader);
+
                 let newH = document.createElement('h2');
                 newH.textContent = data[i].name;
-                modalHeader.appendChild(newH);
-                adviceModal();
+                modalContents.appendChild(newH);
                 for (let i = 0; i < titles.length; i++) {
                     let title = titles[i];
                     let element = elements[i];
@@ -74,25 +60,21 @@ function retrieve(data) {
                     newP.innerHTML = '<span class="pretty_title"><strong>' + title + '</strong></span>' + '<br>' + element;
                     modalContents.appendChild(newP);
                 }
+                let closeButton = document.createElement('button');
+                closeButton.textContent = 'Close';
+                closeButton.setAttribute('id', 'close');
+                modalContents.appendChild(closeButton);
                 dataModal.classList.remove('modal-hidden');
-                closeButton.classList.remove(button - hidden);
+                closeButton.addEventListener('click', function () {
+                    dataModal.classList.add('modal-hidden');
+                });
             }
         })
     }
 }
 
-let closeButton = document.createElement('button');
-closeButton.textContent = 'Close';
-closeButton.setAttribute('id', 'close');
-closeButton.setAttribute('class', 'button button-hidden');
-dataModal.appendChild(closeButton);
-closeButton.addEventListener('click', function () {
-    dataModal.classList.add('modal-hidden');
-});
 window.addEventListener('keydown', function (event) {
     if (event.keyCode === 27) {
         dataModal.classList.add('modal-hidden');
     }
 })
-
-
