@@ -1,64 +1,150 @@
+// ===============
+// Query Selectors
+// ===============
 const dataContainer = document.querySelector('[data-container]');
 const dataModal = document.querySelector('[data-modal]');
 const thumbnail = document.querySelectorAll('.thumbnail');
 const modalContents = document.querySelector('[data-modal-contents]');
 const closeButton = document.querySelector('#close');
-const images = [
-    "images/aries.jpg",
-    "images/taurus.jpg",
-    "images/gemini.jpg",
-    "images/cancer.jpg",
-    "images/leo.jpg",
-    "images/virgo.jpg",
-    "images/libra.jpg",
-    "images/scorpio.jpg",
-    "images/sagittarius.jpg",
-    "images/capricorn.jpg",
-    "images/aquarius.jpg",
-    "images/pisces.jpg"
-];
-
-const astro_url = "http://my-little-cors-proxy.herokuapp.com/https://zodiacal.herokuapp.com/api";
-
-function zodiacData() {
-    fetch(astro_url)
-    .then(r => r.json())
-    .then(cacheData)
-    // .then(doStuff)
-    .then(retrieve)
-}
-
-function cacheData(data) {
-    return data;
-}
 
 
-zodiacData();
+// ==========
+// API Urls's
+// ==========
+const astroUrl = 'http://my-little-cors-proxy.herokuapp.com/https://zodiacal.herokuapp.com/api';
+const nasaApi = 'https://api.nasa.gov/planetary/apod?api_key=NsOJtsgXZf2MCfrnp0agtJ0Kr1w3xPcZVLMWM3Hq';
 
+// =============
+// Fetched API's
+// =============
+let fetchedNasaApi = fetch('https://api.nasa.gov/planetary/apod?api_key=NsOJtsgXZf2MCfrnp0agtJ0Kr1w3xPcZVLMWM3Hq')
+let fetchedAstroUrl = fetch('http://my-little-cors-proxy.herokuapp.com/https://zodiacal.herokuapp.com/api');
+
+// ==========================================================
+// Triggers Promise and Converts Both Fetched Api's Into JSON
+// ==========================================================
+Promise.all([fetchedNasaApi, fetchedAstroUrl])
+.then((resolvedPData) => {
+    let jsonArray = resolvedPData.map(eachP => {
+          return eachP.json();
+    })
+    return Promise.all(jsonArray);
+})
+
+
+// ===================================
+// Returns Modified Values In An Array
+// ===================================
+.then((jsonArray) => {
+    return [jsonArray[1], jsonArray[0].url];   
+})
+
+
+// =================================================================================================
+// Triggers Function Calls To Get Background Image Appended and Major DOM Manipulation Functionality
+// =================================================================================================
+.then((bothPromises) => {
+    appendImageToBody(bothPromises[1]);
+    retrieve(bothPromises[0]);
+
+})
+
+// ==============================================
+// Function That Appends Background Image To Body
+// ==============================================
+function appendImageToBody(image) {
+    document.body.style.backgroundImage = `url(${image})`;
+        
+ }
+
+// =================================================
+// Function For Major Dom Manipulation Functionality
+// =================================================
 function retrieve(data) {
+
+    //  Loops through all divs containing astrological images
     for (let i = 0; i < thumbnail.length; i++) {
+
+        // Adds an event listener on the indiviual div/image so when the user clicks we can execute the following code
         thumbnail[i].addEventListener('click', function () {
+
+            // Checks to see the current existance of the Astrilogical name
             if (data[i].name) {
+
+                // Each time through the loop we reset the inner.html
                 modalContents.innerHTML = '';
-                let titles = ['Element', 'Mental Traits', 'Physical Traits', 'Famous People', 'Secret Wish', 'Vibe',
-                'Hates', 'Compatibility']
-                let elements = [data[i].element, data[i].mental_traits[0], data[i].physical_traits[0], data[i].famous_people[0], data[i].secret_wish, data[i].vibe,
-                data[i].hates[0],
-                data[i]['compatibility']];
+ 
+              // Creates an array with the elements traits
+                let titles = ['Element', 
+                              'Mental Traits', 
+                              'Physical Traits', 
+                              'Famous People', 
+                              'Secret Wish', 
+                              'Vibe',
+                              'Hates', 
+                              'Compatibility'];
+
+                // Creates an array with the targeted data structures astrological traits
+                let elements = [data[i].element, 
+                                data[i].mental_traits[0], 
+                                data[i].physical_traits[0], 
+                                data[i].famous_people[0], 
+                                data[i].secret_wish, 
+                                data[i].vibe,
+                                data[i].hates[0],
+                                // Compatibility was an object not an array
+                                data[i]['compatibility']];
+
+                // Creates a new h2 element to hold the value of the name of the astrological sign
                 let newH = document.createElement('h2');
+
+                // Sets the h2 element to contain our the name of our astrological sign
                 newH.textContent = data[i].name;
+
+                // Appends the name of our astrological sign to our container
                 modalContents.appendChild(newH);
+
+                // Loops through our titles/astrological traits
                 for (let i = 0; i < titles.length; i++) {
+
+                    // Sets each element in titles array to the title variable to be used later
                     let title = titles[i];
+
+                    // Sets each element in elements array to the element variable to be used later
                     let element = elements[i];
+
+                    // Creates a new paragraph for ...
                     let newP = document.createElement('p');
+
+                    // Creates a class on the fly inside a span that sets the inner.html to the astrological trait and element to the current sign in the loop
                     newP.innerHTML = '<span class="pretty_title"><strong>' + title + '</strong></span>' + '<br>' + element;
+
+                    // Appends modified newP to modalContents
                     modalContents.appendChild(newP);
                 }
+
+                // Creates a new button
+                let closeButton = document.createElement('button');
+
+                // Sets the text content for the button to 'Close'
+                closeButton.textContent = 'Close';
+
+                // Sets ad id attribute of the button to close
+                closeButton.setAttribute('id', 'close');
+
+                // Appends the new button to our modal contents
+                modalContents.appendChild(closeButton);
+
+                // Triggers class to reveal modal
                 dataModal.classList.remove('modal-hidden');
+
+                // Adds an event listener to check for when the user clicks the close button
                 closeButton.addEventListener('click', function () {
-                    dataModal.classList.add('modal-hidden');
-                    this.className = '';
+
+                // Adds class to make modal hidden again
+                dataModal.classList.add('modal-hidden');
+                this.className = '';
+                  
                 });
                 if(i===0 || i===4 || i===8){
                     //fire
@@ -92,14 +178,3 @@ window.addEventListener('keydown', (event) => {
     }
 });
 
-
-
-
-
-                // closeButton.textContent = 'Close';
-                // closeButton.setAttribute('id', 'close');
-                // dataModal.appendChild(closeButton);
-                // dataModal.classList.remove('modal-hidden');
-                // closeButton.addEventListener('click', function () {
-                //     dataModal.classList.add('modal-hidden');
-                // });
