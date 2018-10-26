@@ -80,17 +80,17 @@ function retrieve(data) {
             }
         })
     } function adviceSlip() {
-        fetch('http://api.adviceslip.com/advice')
+        fetch(adviceApi)
             .then(response => response.json())
             .then(data => data.slip.advice)
             .then(adviceModal)
     }
     adviceSlip();
 
-    const advice = document.createElement('p');
     let modalHeader = document.createElement('div');
 
     function adviceModal(input) {
+        const advice = document.createElement('p');
         advice.innerHTML = '<span class="pretty_title"><strong>' + 'Your Lucky Advice' + '</strong></span>' + '<br>' + input;
         advice.setAttribute('class', 'advice');
         modalHeader.appendChild(advice);
