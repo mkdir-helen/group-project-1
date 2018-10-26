@@ -123,18 +123,6 @@ function retrieve(data) {
                     modalContents.appendChild(newP);
                 }
 
-                // Creates a new button
-                let closeButton = document.createElement('button');
-
-                // Sets the text content for the button to 'Close'
-                closeButton.textContent = 'Close';
-
-                // Sets ad id attribute of the button to close
-                closeButton.setAttribute('id', 'close');
-
-                // Appends the new button to our modal contents
-                modalContents.appendChild(closeButton);
-
                 // Triggers class to reveal modal
                 dataModal.classList.remove('modal-hidden');
 
