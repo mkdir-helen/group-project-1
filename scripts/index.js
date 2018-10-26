@@ -72,3 +72,17 @@ function retrieve(data) {
         })
     }
 }
+
+window.addEventListener('keydown', function (event) {
+    if (event.keyCode === 27) {
+        // console.log('ahsaifb');
+        dataModal.classList.add('modal-hidden');
+    }
+})
+
+function adviceSlip() {
+    fetch('http://api.adviceslip.com/advice')
+        .then(response => response.json())
+        .then(data => data.slip.advice)
+}
+adviceSlip();
