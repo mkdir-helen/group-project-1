@@ -6,7 +6,9 @@ const dataModal = document.querySelector('[data-modal]');
 const thumbnail = document.querySelectorAll('.thumbnail');
 const modalContents = document.querySelector('[data-modal-contents]');
 const closeButton = document.querySelector('#close');
-const modalHeader = document.createElement('div');
+const modalHeaderClare = document.createElement('div');
+const modalHeaderMelon = document.createElement('div');
+const modalTitle = document.createElement('div');
 
 // ==========
 // API Urls's
@@ -60,10 +62,11 @@ function appendImageToBody(image) {
 // Function That Appends Advice Box To Modal Header
 // ================================================
 function adviceModal(input) {
+    modalHeaderClare.innerHTML = '';
     const advice = document.createElement('p');
     advice.innerHTML = '<span class="pretty_title"><strong>' + 'Your Lucky Advice' + '</strong></span>' + '<br>' + input;
     advice.setAttribute('class', 'advice');
-    modalHeader.appendChild(advice);
+    modalHeaderClare.appendChild(advice);
 }
 
 // =================================================
@@ -82,6 +85,9 @@ function retrieve(data) {
 
                 // Each time through the loop we reset the inner.html
                 modalContents.innerHTML = '';
+                //reset the div that contains the Title for the modal
+                modalHeaderMelon.innerHTML = '';
+
 
                 // Creates an array with the elements traits
                 let titles = ['Element',
@@ -104,18 +110,23 @@ function retrieve(data) {
                 // Compatibility was an object not an array
                 data[i]['compatibility']];
 
-                // Creates a header to hold the header and advice slip
-                modalHeader.setAttribute('class', 'modalHeader');
-                modalContents.appendChild(modalHeader);
-
+                //Made a div that would contain the two seprate divs(title, advice)
+                modalTitle.setAttribute('class', 'modal-titles');
+                
                 // Creates a new h2 element to hold the value of the name of the astrological sign
                 let newH = document.createElement('h2');
-
+                
                 // Sets the h2 element to contain our the name of our astrological sign
                 newH.textContent = data[i].name;
-
+                
                 // Appends the name of our astrological sign to the header
-                modalHeader.appendChild(newH);
+                modalHeaderMelon.appendChild(newH);
+                modalTitle.appendChild(modalHeaderMelon);
+
+                // Creates a header to hold the header and advice slip
+                modalHeaderClare.setAttribute('class', 'modalHeader');
+                modalTitle.appendChild(modalHeaderClare);
+                modalContents.appendChild(modalTitle);
 
                 // Loops through our titles/astrological traits
                 for (let i = 0; i < titles.length; i++) {
