@@ -18,6 +18,22 @@ const images = [
     "images/pisces.jpg"
 ];
 
+function adviceSlip() {
+    fetch('http://api.adviceslip.com/advice')
+        .then(response => response.json())
+        .then(data => data.slip.advice)
+        .then(adviceModal)
+}
+adviceSlip();
+
+const advice = document.createElement('p');
+function adviceModal(input) {
+    // console.log(advice);
+    advice.innerHTML = '<span class="pretty_title"><strong>' + 'Your Lucky Advice' + '</strong></span>' + '<br>' + input;
+    advice.setAttribute('class', 'advice');
+    modalContents.appendChild(advice);
+}
+
 const astro_url = "http://my-little-cors-proxy.herokuapp.com/https://zodiacal.herokuapp.com/api";
 
 function zodiacData() {
@@ -27,17 +43,12 @@ function zodiacData() {
         // .then(doStuff)
         .then(retrieve)
 }
+zodiacData();
 
 function cacheData(data) {
     return data;
 }
 
-// function doStuff(data) {
-//     console.log(data);
-//     return data;
-// }
-
-zodiacData();
 
 function retrieve(data) {
     for (let i = 0; i < thumbnail.length; i++) {
@@ -53,6 +64,7 @@ function retrieve(data) {
                 let newH = document.createElement('h2');
                 newH.textContent = data[i].name;
                 modalContents.appendChild(newH);
+                adviceModal();
                 for (let i = 0; i < titles.length; i++) {
                     let title = titles[i];
                     let element = elements[i];
@@ -75,14 +87,8 @@ function retrieve(data) {
 
 window.addEventListener('keydown', function (event) {
     if (event.keyCode === 27) {
-        // console.log('ahsaifb');
         dataModal.classList.add('modal-hidden');
     }
 })
 
-function adviceSlip() {
-    fetch('http://api.adviceslip.com/advice')
-        .then(response => response.json())
-        .then(data => data.slip.advice)
-}
-adviceSlip();
+

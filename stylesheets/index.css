@@ -29,15 +29,16 @@ h1, h4 {
 	padding: 10px;
 	margin-left: 10px;
 	margin-right: 10px;
+	max-width: 1399px;
 }
 
 h4 {
 	padding: 20px;
 	font-family: fantasy;
 }
-/* 
-==================================
-ZODIAC TILES
+
+/* =================================
+          ZODIAC TILES
 =================================== */
 
 .imagecontainer {
@@ -64,6 +65,19 @@ img {
 	border-radius: 7%;
 }
 
+.caption {
+	color: white;
+	background-color: rgba(0, 0, 255, .5);
+	border-radius: 10px;
+	padding: 0 10px;
+	z-index: 1;
+	font-size: 10px;
+}
+
+/* =================================
+          FOOTER
+=================================== */
+
 footer {
 	height: 10%;
 	width: 100%;
@@ -75,34 +89,10 @@ footer {
 	margin-top: 20px;
 }
 
-.caption {
-	color: white;
-	background-color: rgba(0, 0, 255, .5);
-	border-radius: 10px;
-	padding: 0 10px;
-	z-index: 1;
-	font-size: 10px;
-}
+/* =================================
+          MODAL
+=================================== */
 
-.modalContents {
-	/* position: -webkit-sticky;  */
-	position: fixed;
-	top: 15%;
-	width: 80%;
-	left: 10%;
-	/* height: 400px; */
-	height: 70%;
-	background-color: rgba(0,0,0,0.85);
-	align-items: center;
-	text-align: center;
-	transition: all 200ms ease-in-out;
-	color: white;
-	border-radius: 5px;
-	flex-direction: column;
-	overflow-x: hidden;
-	border: 3px solid rgba(247,154,65, 0.9);;
-	/* box-shadow: 5px 5px 5px  black; */
-}
 .modal {
 	position: absolute;
 	/* outline: 2px solid orange; */
@@ -112,6 +102,24 @@ footer {
 	height: 100%; 
 	/* overflow: hidden; */
 	
+}
+
+.modalContents {
+	position: fixed;
+	top: 15%;
+	width: 80%;
+	left: 10%;
+	height: 70%;
+	background-color: rgba(0,0,0,0.85);
+	align-items: center;
+	text-align: center;
+	transition: all 200ms ease-in-out;
+	color: white;
+	border-radius: 5px;
+	flex-direction: column;
+	overflow-x: hidden;
+	border: 3px solid rgba(247,154,65, 0.9);
+	/* box-shadow: 5px 5px 5px  black; */
 }
 
 h2 {
@@ -128,10 +136,8 @@ h2 {
 	letter-spacing: 3px;
 }
 
-.pretty_title{
-	text-decoration: underline;
-	font-family: 'Srisakdi', cursive;
-
+.advice, h2 {
+	display: inline-block;
 }
 
 .modalContents > p {
@@ -150,7 +156,10 @@ h2 {
 	font-family: fantasy;
 } 
 
-
+.pretty_title{
+	text-decoration: underline;
+	font-family: 'Srisakdi', cursive;
+}
 
 button {
 	border: none;
@@ -162,16 +171,16 @@ button {
 	font-family: 'Srisakdi', cursive;
 }
 
-textarea {
-	background-color: rgba(0, 0, 255, .5);
-
-}
-
 .modal-hidden {
 	display: none;
 	transform: scale(0.00001);
 	flex-wrap: wrap;
 }
+
+/* =================================
+          MEDIA QUERIES
+=================================== */
+
 @media only screen and (min-width: 415px) {
 	img {
 		height: 150px;
@@ -229,9 +238,6 @@ textarea {
 		height: 250px;
 		width: 250px;
 	}
-	/* .modalContents {
-		height: 700px;
-	} */
 	h2 {
 		margin-bottom: 5%;
 		margin-top: 3%;
@@ -253,6 +259,10 @@ textarea {
 @media only screen and (min-width: 1399px) {
 	.imagecontainer {
 		margin:auto;
+	}
+	h1, h4 {
+		margin-left: auto;
+		margin-right: auto;
 	}
 }
 
