@@ -73,6 +73,11 @@ ZODIAC TILES
 	padding: 5px 5px 0px 5px;
 	text-align: center;
 	margin: auto 10px 20px 10px;
+	transition: all 0.5s ease-out;
+	-webkit-transition: all 0.5s ease-out;
+	-moz-transition: all 0.5s ease-out;
+	-ms-transition: all 0.5s ease-out;
+	-o-transition: all 0.5s ease-out;
 }
 
 img {
@@ -82,6 +87,28 @@ img {
 	width: 110px;
 	color: white;
 	border-radius: 7%;
+	-webkit-border-radius:7%;
+	-moz-border-radius:7%;
+	-ms-border-radius:7%;
+	-o-border-radius:7%;
+}
+
+img:hover{
+	border: 3px solid gold;
+}
+
+.thumbnail:hover {
+	transform: scale(1.3);
+	-webkit-transform: scale(1.3);
+	-moz-transform: scale(1.3);
+	-ms-transform: scale(1.3);
+	-o-transform: scale(1.3);
+	background-color: black;
+	border-radius: 7%;
+	-webkit-border-radius: 7%;
+	-moz-border-radius: 7%;
+	-ms-border-radius: 7%;
+	-o-border-radius: 7%;
 }
 
 .caption {
@@ -124,16 +151,25 @@ footer {
 	/* overflow: hidden; */
 }
 
+.modalTitle{
+	display: flex;
+	align-items: center;
+	margin-right: 5%;
+	padding-left: 2%;
+}
+
 .modal-titles {
 	display: flex;
 	justify-content: space-between;
+	margin: auto;
+	width: 100%;
 }
 
 h2 {
 	font-size: 2.2em;
 	margin: 5%;
 	background-color:rgb(118, 35, 118);
-	width: 50%;
+	width: auto;
 	height: 50%;
 	border-radius: 50%;
 	-webkit-border-radius: 50%;
