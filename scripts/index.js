@@ -121,6 +121,7 @@ function retrieve(data) {
                 
                 // Appends the name of our astrological sign to the header
                 modalHeaderMelon.appendChild(newH);
+                modalHeaderMelon.setAttribute('class', 'modalTitle');
                 modalTitle.appendChild(modalHeaderMelon);
 
                 // Creates a header to hold the header and advice slip
