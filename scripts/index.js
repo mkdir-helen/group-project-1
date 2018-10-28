@@ -10,24 +10,17 @@ const modalHeaderClare = document.createElement('div');
 const modalHeaderMelon = document.createElement('div');
 const modalTitle = document.createElement('div');
 
-// ==========
-// API Urls's
-// ==========
-const astroUrl = 'http://my-little-cors-proxy.herokuapp.com/https://zodiacal.herokuapp.com/api';
-const nasaApi = 'https://api.nasa.gov/planetary/apod?api_key=NsOJtsgXZf2MCfrnp0agtJ0Kr1w3xPcZVLMWM3Hq';
-const adviceApi = 'http://api.adviceslip.com/advice';
-
-// =============
-// Fetched API's
-// =============
-let fetchedNasaApi = fetch('https://api.nasa.gov/planetary/apod?api_key=NsOJtsgXZf2MCfrnp0agtJ0Kr1w3xPcZVLMWM3Hq');
-let fetchedAstroUrl = fetch('http://my-little-cors-proxy.herokuapp.com/https://zodiacal.herokuapp.com/api');
-let fetchedAdviceApi = fetch('http://api.adviceslip.com/advice');
+// ===================
+// Fetched API's & Url
+// ===================
+const fetchedNasaApi = fetch('https://api.nasa.gov/planetary/apod?api_key=NsOJtsgXZf2MCfrnp0agtJ0Kr1w3xPcZVLMWM3Hq');
+const fetchedAstroUrl = fetch('http://my-little-cors-proxy.herokuapp.com/https://zodiacal.herokuapp.com/api');
+const fetchedAdviceApi = fetch('http://api.adviceslip.com/advice');
 
 // ==========================================================
 // Triggers Promise and Converts Both Fetched Api's Into JSON
 // ==========================================================
-Promise.all([fetchedNasaApi, fetchedAstroUrl, fetchedAdviceApi])
+Promise.all([fetchedNasaApi, fetchedAstroUrl])
     .then((resolvedPData) => {
         let jsonArray = resolvedPData.map(eachP => {
             return eachP.json();
@@ -39,7 +32,7 @@ Promise.all([fetchedNasaApi, fetchedAstroUrl, fetchedAdviceApi])
     // Returns Modified Values In An Array
     // ===================================
     .then((jsonArray) => {
-        return [jsonArray[1], jsonArray[0].url, jsonArray[2].slip.advice];
+        return [jsonArray[1], jsonArray[0].url];
     })
 
     // =================================================================================================
@@ -48,8 +41,8 @@ Promise.all([fetchedNasaApi, fetchedAstroUrl, fetchedAdviceApi])
     .then((bothPromises) => {
         appendImageToBody(bothPromises[1]);
         retrieve(bothPromises[0]);
-        adviceModal(bothPromises[2]);
     })
+   
 
 // ==============================================
 // Function That Appends Background Image To Body
@@ -58,16 +51,6 @@ function appendImageToBody(image) {
     document.body.style.backgroundImage = `url(${image})`;
 }
 
-// ================================================
-// Function That Appends Advice Box To Modal Header
-// ================================================
-function adviceModal(input) {
-    modalHeaderClare.innerHTML = '';
-    const advice = document.createElement('p');
-    advice.innerHTML = '<span class="pretty_title"><strong>' + 'Your Lucky Advice' + '</strong></span>' + '<br>' + input;
-    advice.setAttribute('class', 'advice');
-    modalHeaderClare.appendChild(advice);
-}
 
 // =================================================
 // Function For Major Dom Manipulation Functionality
@@ -83,11 +66,39 @@ function retrieve(data) {
             // Checks to see the current existance of the Astrilogical name
             if (data[i].name) {
 
+                // Fetches advice API each time user clicks on a given astrology sign
+                function getAdvice() {
+                    fetch('http://api.adviceslip.com/advice')
+                    .then(response => response.json())
+                    .then(data => data.slip.advice)
+                    .then(changeAdvice)
+                }
+                getAdvice();
+
+                // Creates function to change daily advice each time user clicks astrology sign
+                function changeAdvice(dailyAdvice) {
+
+                    // Resets inner.HTML every time user clicks on new astrology sign
+                    modalHeaderClare.innerHTML = '';
+
+                    // Creates a new empty paragraph
+                    const advice = document.createElement('p');
+
+                    // Sets the innerHTML to the daily adivce
+                    advice.innerHTML = '<span class="pretty_title"><strong>' + 'Your Lucky Advice' + '</strong></span>' + '<br>' + dailyAdvice;
+
+                    // Gives the advice paragraph a class of advice
+                    advice.setAttribute('class', 'advice');
+
+                    // Appends the modfied result to main div
+                    modalHeaderClare.appendChild(advice);
+                }
+
                 // Each time through the loop we reset the inner.html
                 modalContents.innerHTML = '';
-                //reset the div that contains the Title for the modal
+                
+                // Reset the div that contains the title for the modal
                 modalHeaderMelon.innerHTML = '';
-
 
                 // Creates an array with the elements traits
                 let titles = ['Element',
@@ -162,7 +173,7 @@ function retrieve(data) {
                 });
 
                 // Checks if current image clicked is at index 0, 4, or 8 to set to fire sign
-                if(i===0 || i===4 || i===8){
+                if (i===0 || i===4 || i===8) {
 
                     // Adds class name of fire based on current astrological sign
                     newH.classList.add('fire');
@@ -171,7 +182,7 @@ function retrieve(data) {
                     closeButton.classList.add('fire');
 
                 // Checks if current image clicked is at index 1, 5, or 9 to set to earth sign
-                }else if (i===1 || i===5 || i===9){
+                } else if (i===1 || i===5 || i===9) {
                     
                     // Adds class name of earth based on current astrological sign 
                     newH.classList.add('earth');
@@ -180,7 +191,7 @@ function retrieve(data) {
                     closeButton.classList.add('earth');
 
                 // Checks if current image clicked is at index 2, 6, or 10 to set to air sign
-                }else if(i===2 || i===6 || i===10){
+                } else if (i===2 || i===6 || i===10) {
                     
                     // Adds class name of air based on current astrological sign
                     newH.classList.add('air');
@@ -189,7 +200,7 @@ function retrieve(data) {
                     closeButton.classList.add('air');
 
                 // Checks if current image clicked is at index 3, 7, or 11 to set to water sign
-                }else if(i===3 || i===7 || i===11){
+                } else if (i===3 || i===7 || i===11) {
                     
                     // Adds class name of water based on current astrological sign
                     newH.classList.add('water');
@@ -215,12 +226,12 @@ window.addEventListener('keydown', (event) => {
 
         // We want to avoid duplicates of classes being created
         // If the classList is currently empty(false) or not hidden
-        if(dataModal.classList.contains('modal-hidden') === false){
+        if (dataModal.classList.contains('modal-hidden') === false){
 
             // Then after the user presses escape we want to add the class name to dataModal
             dataModal.classList.add('modal-hidden');
 
-          };
+        };
     }
 });
 
