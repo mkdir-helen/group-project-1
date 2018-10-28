@@ -9,7 +9,7 @@ const closeButton = document.querySelector('#close');
 
 
 // ==========
-// API Urls's
+// API Url's
 // ==========
 const astroUrl = 'http://my-little-cors-proxy.herokuapp.com/https://zodiacal.herokuapp.com/api';
 const nasaApi = 'https://api.nasa.gov/planetary/apod?api_key=NsOJtsgXZf2MCfrnp0agtJ0Kr1w3xPcZVLMWM3Hq';
@@ -138,7 +138,7 @@ function retrieve(data) {
                 });
 
                 // Checks if current image clicked is at index 0, 4, or 8 to set to fire sign
-                if(i===0 || i===4 || i===8){
+                if(i===0 || i===4 || i===8) {
 
                     // Adds class name of fire based on current astrological sign
                     newH.classList.add('fire');
@@ -147,7 +147,7 @@ function retrieve(data) {
                     closeButton.classList.add('fire');
 
                 // Checks if current image clicked is at index 1, 5, or 9 to set to earth sign
-                }else if (i===1 || i===5 || i===9){
+                }else if (i===1 || i===5 || i===9) {
                     
                     // Adds class name of earth based on current astrological sign 
                     newH.classList.add('earth');
@@ -156,7 +156,7 @@ function retrieve(data) {
                     closeButton.classList.add('earth');
 
                 // Checks if current image clicked is at index 2, 6, or 10 to set to air sign
-                }else if(i===2 || i===6 || i===10){
+                }else if(i===2 || i===6 || i===10) {
                     
                     // Adds class name of air based on current astrological sign
                     newH.classList.add('air');
@@ -165,7 +165,7 @@ function retrieve(data) {
                     closeButton.classList.add('air');
 
                 // Checks if current image clicked is at index 3, 7, or 11 to set to water sign
-                }else if(i===3 || i===7 || i===11){
+                }else if(i===3 || i===7 || i===11) {
                     
                     // Adds class name of water based on current astrological sign
                     newH.classList.add('water');
@@ -193,7 +193,7 @@ window.addEventListener('keydown', (event) => {
             // Then after the user presses escape we want to add the class name to dataModal
             dataModal.classList.add('modal-hidden');
 
-          };
+        };
     }
 });
 
