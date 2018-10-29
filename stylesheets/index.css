@@ -131,14 +131,15 @@ footer {
 
 .modalTitle{
 	display: flex;
+	justify-content: center;
 	align-items: center;
 	margin-right: 5%;
 	padding-left: 2%;
 }
 
 .modal-titles {
-	display: flex;
-	justify-content: space-between;
+	/* display: flex; */
+	/* justify-content: space-between; */
 	margin: auto;
 	width: 100%;
 }
@@ -147,7 +148,7 @@ h2 {
 	font-size: 2.2em;
 	margin: 5%;
 	width: auto;
-	height: 50%;
+	height: 20%;
 	border-radius: 50%;
 	-webkit-border-radius: 50%;
 	-moz-border-radius: 50%;
@@ -191,6 +192,10 @@ h2 {
 	max-height: 100%;
 	font-family: fantasy;
 } 
+
+.modalHeader > p{
+	border: 1px dashed rgba(247,154,65, 0.9);
+}
 
 .pretty_title{
 	text-decoration: underline;
@@ -246,6 +251,7 @@ button:hover, button:active{
 	.caption {
 		font-size: 12px;
 	}
+	
 }
 
 @media only screen and (min-width: 540px) {
@@ -261,9 +267,17 @@ button:hover, button:active{
 	h2 {
 		font-size: 2.5em;
 		margin-bottom: 7%;
+		height: 40%;
 	}
 	button {
 		font-size: 1em;
+	}
+	.modal-titles {
+		display: flex; 
+		justify-content: space-between; 
+	}
+	.modalTitle{
+		justify-content: start;
 	}
 }
 
@@ -283,6 +297,10 @@ button:hover, button:active{
 		h1 {
 			font-size: 2.8em;
 		}
+		h2{
+			height: 50%;
+		}
+
 		h4 {
 			font-size: 1.5em;
 		}
