@@ -1,3 +1,14 @@
+#video-background {
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	min-width: 100%;
+	min-height: 100%;
+	width: auto;
+	height: auto;
+	z-index: -100;
+}
+
 html {
 	box-sizing: border-box;
 }
@@ -20,7 +31,7 @@ body {
 	/* opacity: 1; */
 }
 
-	/* .space-video {
+/* .space-video {
 		position: fixed;
 		right: 0;
 		bottom: 0;
@@ -29,12 +40,14 @@ body {
 	}
 	 */
 
-
 .header {
-
-	background: #E6DADA;  /* fallback for old browsers */
-	background: -webkit-linear-gradient(to top, #274046, #E6DADA);  /* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(to top, #274046, #E6DADA); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background: #e6dada; /* fallback for old browsers */
+	background: -webkit-linear-gradient(to top, #274046, #e6dada); /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(
+		to top,
+		#274046,
+		#e6dada
+	); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 	margin-top: -2%;
 	height: 17%;
 	width: 78%;
@@ -51,10 +64,11 @@ h1 {
 	padding-top: 1%;
 	letter-spacing: 5px;
 }
-h1, h4 {
+h1,
+h4 {
 	text-align: center;
 	max-width: 1399px;
-	color: rgba(0, 0, 0, .7)
+	color: rgba(0, 0, 0, .7);
 }
 
 h4 {
@@ -88,7 +102,7 @@ h4 {
 	-o-transition: all 0.5s ease-out;
 }
 
-img  {
+img {
 	display: flex;
 	margin: 5px auto;
 	height: 110px;
@@ -96,25 +110,25 @@ img  {
 	color: white;
 	border-radius: 7%;
 
-    opacity: .6;
-    transform: scale(1);
+	opacity: .6;
+	transform: scale(1);
 	transition: transform .5s, opacity .5s;
-	margin-bottom: 25px; 
+	margin-bottom: 25px;
 }
 
 img:hover {
-    opacity: 1;
-    transform: scale(1.10);
+	opacity: 1;
+	transform: scale(1.10);
 }
 
 .caption {
 	/* color: white; */
 	color: rgba(255, 255, 255, .9);
-  	/* background: -webkit-linear-gradient(to right, #000000, #434343);
+	/* background: -webkit-linear-gradient(to right, #000000, #434343);
 	  background: linear-gradient(to right, #000000, #434343); */
-	  
-	background: -webkit-linear-gradient(to top, #274046ad, rgba(230, 218, 218, 0.164)); 
-	background: linear-gradient(to top, #27404669, rgba(230, 218, 218, 0.192)); 
+
+	background: -webkit-linear-gradient(to top, #274046ad, rgba(230, 218, 218, 0.164));
+	background: linear-gradient(to top, #27404669, rgba(230, 218, 218, 0.192));
 	border-radius: 10px;
 	padding: 0 10px;
 	font-size: 10px;
@@ -131,8 +145,8 @@ footer {
 	color: rgba(0, 0, 0, .7);
 	font-size: 1.3rem;
 	letter-spacing: 2px;
-	background: -webkit-linear-gradient(to top, #274046, #E6DADA); 
-	background: linear-gradient(to top, #274046, #E6DADA); 
+	background: -webkit-linear-gradient(to top, #274046, #e6dada);
+	background: linear-gradient(to top, #274046, #e6dada);
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -150,12 +164,12 @@ footer {
 	text-align: center;
 	top: 10%;
 	width: 100%;
-	height: 100%; 
+	height: 100%;
 	z-index: 5;
 	/* overflow: hidden; */
 }
 
-.modalTitle{
+.modalTitle {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -184,7 +198,8 @@ h2 {
 	order: -1;
 }
 
-.advice, .modal-titles > h2 {
+.advice,
+.modal-titles > h2 {
 	display: inline-block;
 }
 
@@ -194,18 +209,19 @@ h2 {
 	width: 80%;
 	left: 10%;
 	height: 70%;
-	background-color: rgba(0,0,0,0.85);
+	background-color: rgba(0, 0, 0, 0.85);
 	align-items: center;
 	transition: all 200ms ease-in-out;
 	color: white;
 	border-radius: 5px;
 	flex-direction: column;
 	overflow-x: hidden;
-	border: 3px solid rgba(247,154,65, 0.9);
+	border: 3px solid rgba(247, 154, 65, 0.9);
 	margin: auto;
 }
 
-.modalContents > p, .modalHeader > p {
+.modalContents > p,
+.modalHeader > p {
 	color: white;
 	text-align: center;
 	background-color: rgba(0, 0, 255, .5);
@@ -213,31 +229,32 @@ h2 {
 	padding: 10px;
 	margin-left: 10px;
 	margin-right: 10px;
-	border: 1px solid rgba(247,154,65, 0.9);
+	border: 1px solid rgba(247, 154, 65, 0.9);
 	max-width: 100%;
 	max-height: 100%;
 	font-family: fantasy;
-} 
-
-.modalHeader > p{
-	border: 1px dashed rgba(247,154,65, 0.9);
 }
 
-.pretty_title{
+.modalHeader > p {
+	border: 1px dashed rgba(247, 154, 65, 0.9);
+}
+
+.pretty_title {
 	text-decoration: underline;
 	font-family: 'Srisakdi', cursive;
 }
 
 button {
 	position: relative;
-	border: 1px solid rgba(247,154,65, 0.9);
+	border: 1px solid rgba(247, 154, 65, 0.9);
 	border-radius: 5px;
 	color: white;
 	bottom: -78%;
 	font-family: 'Srisakdi', cursive;
 }
 
-button:hover, button:active{
+button:hover,
+button:active {
 	background: black;
 }
 
@@ -252,17 +269,17 @@ button:hover, button:active{
 			ELEMENT COLORS
 =================================== */
 
-.fire{
+.fire {
 	background-color: rgba(236, 72, 39, 0.9);
 }
-.air{
+.air {
 	background-color: rgba(107, 234, 251, 0.9);
 }
-.earth{
-	background-color: rgba(240,165,80,0.9);
+.earth {
+	background-color: rgba(240, 165, 80, 0.9);
 }
-.water{
-	background-color: rgba(26,50,121, 0.9);	
+.water {
+	background-color: rgba(26, 50, 121, 0.9);
 }
 
 /* =================================
@@ -277,7 +294,6 @@ button:hover, button:active{
 	.caption {
 		font-size: 12px;
 	}
-	
 }
 
 @media only screen and (min-width: 540px) {
@@ -299,40 +315,40 @@ button:hover, button:active{
 		font-size: 1em;
 	}
 	.modal-titles {
-		display: flex; 
-		justify-content: space-between; 
+		display: flex;
+		justify-content: space-between;
 	}
-	.modalTitle{
+	.modalTitle {
 		justify-content: start;
 	}
 }
 
 @media only screen and (min-width: 768px) {
-		img {
-			height: 175px;
-			width: 175px; 
-		}
-		.caption {
-			font-size: 15px;
-		}
-		.modalContents {
-			width: 82%;
-			left: 9%;
-			top: 20%;
-		}
-		h1 {
-			font-size: 2.8em;
-		}
-		h2{
-			height: 50%;
-		}
+	img {
+		height: 175px;
+		width: 175px;
+	}
+	.caption {
+		font-size: 15px;
+	}
+	.modalContents {
+		width: 82%;
+		left: 9%;
+		top: 20%;
+	}
+	h1 {
+		font-size: 2.8em;
+	}
+	h2 {
+		height: 50%;
+	}
 
-		h4 {
-			font-size: 1.5em;
-		}
-		button {
-			bottom: -82%;
-		}
+	h4 {
+		font-size: 1.5em;
+	}
+	button {
+		bottom: -82%;
+	}
 }
 
 @media only screen and (min-width: 1020px) {
@@ -346,7 +362,7 @@ button:hover, button:active{
 		font-size: 3em;
 	}
 	p {
-		font-size: 1.5em
+		font-size: 1.5em;
 	}
 	button {
 		font-size: 1.5em;
@@ -359,12 +375,11 @@ button:hover, button:active{
 
 @media only screen and (min-width: 1399px) {
 	.imagecontainer {
-		margin:auto;
+		margin: auto;
 	}
-	h1, h4 {
+	h1,
+	h4 {
 		margin-left: auto;
 		margin-right: auto;
 	}
 }
-
-

@@ -14,231 +14,225 @@ const modalTitle = document.createElement('div');
 // Fetched API's & Url
 // ===================
 
-const fetchedNasaApi = fetch('https://api.nasa.gov/planetary/apod?api_key=NsOJtsgXZf2MCfrnp0agtJ0Kr1w3xPcZVLMWM3Hq&date=2018-10-10');
+const fetchedNasaApi = fetch(
+	'https://api.nasa.gov/planetary/apod?api_key=NsOJtsgXZf2MCfrnp0agtJ0Kr1w3xPcZVLMWM3Hq&date=2018-10-10'
+);
 const fetchedAstroUrl = fetch('http://my-little-cors-proxy.herokuapp.com/https://zodiacal.herokuapp.com/api');
 const fetchedAdviceApi = fetch('http://api.adviceslip.com/advice');
 
 // ==========================================================
 // Triggers Promise and Converts Both Fetched Api's Into JSON
 // ==========================================================
-Promise.all([fetchedNasaApi, fetchedAstroUrl])
-    .then((resolvedPData) => {
-        let jsonArray = resolvedPData.map(eachP => {
-            return eachP.json();
-        })
-        return Promise.all(jsonArray);
-    })
-
-    // ===================================
-    // Returns Modified Values In An Array
-    // ===================================
-    .then((jsonArray) => {
-        return [jsonArray[1], jsonArray[0].url];
-    })
-
-    // =================================================================================================
-    // Triggers Function Calls To Get Background Image Appended and Major DOM Manipulation Functionality
-    // =================================================================================================
-    .then((bothPromises) => {
-        appendImageToBody(bothPromises[1]);
-        retrieve(bothPromises[0]);
-    })
-   
+Promise.all([ fetchedNasaApi, fetchedAstroUrl ])
+	.then((resolvedPData) => {
+		let jsonArray = resolvedPData.map((eachP) => {
+			return eachP.json();
+		});
+		return Promise.all(jsonArray);
+	})
+	// ===================================
+	// Returns Modified Values In An Array
+	// ===================================
+	.then((jsonArray) => {
+		return [ jsonArray[1], jsonArray[0].url ];
+	})
+	// =================================================================================================
+	// Triggers Function Calls To Get Background Image Appended and Major DOM Manipulation Functionality
+	// =================================================================================================
+	.then((bothPromises) => {
+		appendImageToBody(bothPromises[1]);
+		retrieve(bothPromises[0]);
+	});
 
 // ==============================================
 // Function That Appends Background Image To Body
 // ==============================================
 function appendImageToBody(image) {
-    let spaceVideo = document.createElement('iframe');
-    // let source = document.createElement('source');
-    // spaceVideo.appendChild(source);
-    spaceVideo.src = image;
-    spaceVideo.width = '560';
-    spaceVideo.height = '315';
-    let videoDiv = document.createElement('div');
-    videoDiv.appendChild(spaceVideo);
-    document.body.appendChild(videoDiv);
-}
+// 	let spaceVideo = document.createElement('iframe');
+// 	let source = document.createElement('source');
+// 	spaceVideo.appendChild(source);
+// 	spaceVideo.src = image;
+// 	spaceVideo.width = '560';
+// 	spaceVideo.height = '315';
+// 	let videoDiv = document.createElement('div');
+// 	videoDiv.appendChild(spaceVideo);
+// 	document.body.appendChild(videoDiv);
+// }
 
 // var video = document.createElement('video');
 // function appendVideoToBody(element, src) {
 //     var source = document.createElement('source');
- 
+
 //     source.src = src;
 //     // source.type = type;
- 
+
 //     // element.appendChild(source);
 //     element.setAttribute('src', src);
 //     document.body.appendChild(element);
 //  }
- 
- 
+
 // // console.log(updated);
- 
+
 //  appendImageToBody(video, "https://www.youtube.com/embed/hQFEHH5E69s");
- 
-
-
 
 // =================================================
 // Function For Major Dom Manipulation Functionality
 // =================================================
 function retrieve(data) {
+	//  Loops through all divs containing astrological images
+	for (let i = 0; i < thumbnail.length; i++) {
+		// Adds an event listener on the indiviual div/image so when the user clicks we can execute the following code
+		thumbnail[i].addEventListener('click', function() {
+			// Checks to see the current existance of the Astrilogical name
+			if (data[i].name) {
+				// Fetches advice API each time user clicks on a given astrology sign
+				function getAdvice() {
+					fetch('http://api.adviceslip.com/advice')
+						.then((response) => response.json())
+						.then((data) => data.slip.advice)
+						.then(changeAdvice);
+				}
+				getAdvice();
 
-    //  Loops through all divs containing astrological images
-    for (let i = 0; i < thumbnail.length; i++) {
+				// Creates function to change daily advice each time user clicks astrology sign
+				function changeAdvice(dailyAdvice) {
+					// Resets inner.HTML every time user clicks on new astrology sign
+					modalHeaderClare.innerHTML = '';
 
-        // Adds an event listener on the indiviual div/image so when the user clicks we can execute the following code
-        thumbnail[i].addEventListener('click', function () {
+					// Creates a new empty paragraph
+					const advice = document.createElement('p');
 
-            // Checks to see the current existance of the Astrilogical name
-            if (data[i].name) {
+					// Sets the innerHTML to the daily adivce
+					advice.innerHTML =
+						'<span class="pretty_title"><strong>' +
+						'Your Lucky Advice' +
+						'</strong></span>' +
+						'<br>' +
+						dailyAdvice;
 
-                // Fetches advice API each time user clicks on a given astrology sign
-                function getAdvice() {
-                    fetch('http://api.adviceslip.com/advice')
-                    .then(response => response.json())
-                    .then(data => data.slip.advice)
-                    .then(changeAdvice)
-                }
-                getAdvice();
+					// Gives the advice paragraph a class of advice
+					advice.setAttribute('class', 'advice');
 
-                // Creates function to change daily advice each time user clicks astrology sign
-                function changeAdvice(dailyAdvice) {
+					// Appends the modfied result to main div
+					modalHeaderClare.appendChild(advice);
+				}
 
-                    // Resets inner.HTML every time user clicks on new astrology sign
-                    modalHeaderClare.innerHTML = '';
+				// Each time through the loop we reset the inner.html
+				modalContents.innerHTML = '';
 
-                    // Creates a new empty paragraph
-                    const advice = document.createElement('p');
+				// Reset the div that contains the title for the modal
+				modalHeaderMelon.innerHTML = '';
 
-                    // Sets the innerHTML to the daily adivce
-                    advice.innerHTML = '<span class="pretty_title"><strong>' + 'Your Lucky Advice' + '</strong></span>' + '<br>' + dailyAdvice;
+				// Creates an array with the elements traits
+				let titles = [
+					'Element',
+					'Mental Traits',
+					'Physical Traits',
+					'Famous People',
+					'Secret Wish',
+					'Vibe',
+					'Hates',
+					'Compatibility'
+				];
 
-                    // Gives the advice paragraph a class of advice
-                    advice.setAttribute('class', 'advice');
+				// Creates an array with the targeted data structures astrological traits
+				let elements = [
+					data[i].element,
+					data[i].mental_traits[0],
+					data[i].physical_traits[0],
+					data[i].famous_people[0],
+					data[i].secret_wish,
+					data[i].vibe,
+					data[i].hates[0],
+					// Compatibility was an object not an array
+					data[i]['compatibility']
+				];
 
-                    // Appends the modfied result to main div
-                    modalHeaderClare.appendChild(advice);
-                }
+				//Made a div that would contain the two seprate divs(title, advice)
+				modalTitle.setAttribute('class', 'modal-titles');
 
-                // Each time through the loop we reset the inner.html
-                modalContents.innerHTML = '';
-                
-                // Reset the div that contains the title for the modal
-                modalHeaderMelon.innerHTML = '';
+				// Creates a new h2 element to hold the value of the name of the astrological sign
+				let newH = document.createElement('h2');
 
-                // Creates an array with the elements traits
-                let titles = ['Element',
-                    'Mental Traits',
-                    'Physical Traits',
-                    'Famous People',
-                    'Secret Wish',
-                    'Vibe',
-                    'Hates',
-                    'Compatibility'];
+				// Sets the h2 element to contain our the name of our astrological sign
+				newH.textContent = data[i].name;
 
-                // Creates an array with the targeted data structures astrological traits
-                let elements = [data[i].element,
-                data[i].mental_traits[0],
-                data[i].physical_traits[0],
-                data[i].famous_people[0],
-                data[i].secret_wish,
-                data[i].vibe,
-                data[i].hates[0],
-                // Compatibility was an object not an array
-                data[i]['compatibility']];
+				// Appends the name of our astrological sign to the header
+				modalHeaderMelon.appendChild(newH);
+				modalHeaderMelon.setAttribute('class', 'modalTitle');
+				modalTitle.appendChild(modalHeaderMelon);
 
-                //Made a div that would contain the two seprate divs(title, advice)
-                modalTitle.setAttribute('class', 'modal-titles');
-                
-                // Creates a new h2 element to hold the value of the name of the astrological sign
-                let newH = document.createElement('h2');
-                
-                // Sets the h2 element to contain our the name of our astrological sign
-                newH.textContent = data[i].name;
-                
-                // Appends the name of our astrological sign to the header
-                modalHeaderMelon.appendChild(newH);
-                modalHeaderMelon.setAttribute('class', 'modalTitle');
-                modalTitle.appendChild(modalHeaderMelon);
+				// Creates a header to hold the header and advice slip
+				modalHeaderClare.setAttribute('class', 'modalHeader');
+				modalTitle.appendChild(modalHeaderClare);
+				modalContents.appendChild(modalTitle);
 
-                // Creates a header to hold the header and advice slip
-                modalHeaderClare.setAttribute('class', 'modalHeader');
-                modalTitle.appendChild(modalHeaderClare);
-                modalContents.appendChild(modalTitle);
+				// Loops through our titles/astrological traits
+				for (let i = 0; i < titles.length; i++) {
+					// Sets each element in titles array to the title variable to be used later
+					let title = titles[i];
 
-                // Loops through our titles/astrological traits
-                for (let i = 0; i < titles.length; i++) {
+					// Sets each element in elements array to the element variable to be used later
+					let element = elements[i];
 
-                    // Sets each element in titles array to the title variable to be used later
-                    let title = titles[i];
+					// Creates a new paragraph for ...
+					let newP = document.createElement('p');
 
-                    // Sets each element in elements array to the element variable to be used later
-                    let element = elements[i];
+					// Creates a class on the fly inside a span that sets the inner.html to the astrological trait and element to the current sign in the loop
+					newP.innerHTML =
+						'<span class="pretty_title"><strong>' + title + '</strong></span>' + '<br>' + element;
 
-                    // Creates a new paragraph for ...
-                    let newP = document.createElement('p');
+					// Appends modified newP to modalContents
+					modalContents.appendChild(newP);
+				}
 
-                    // Creates a class on the fly inside a span that sets the inner.html to the astrological trait and element to the current sign in the loop
-                    newP.innerHTML = '<span class="pretty_title"><strong>' + title + '</strong></span>' + '<br>' + element;
+				// Triggers class to reveal modal
+				dataModal.classList.remove('modal-hidden');
 
-                    // Appends modified newP to modalContents
-                    modalContents.appendChild(newP);
-                }
+				// Adds an event listener to check for when the user clicks the close button
+				closeButton.addEventListener('click', function() {
+					// Adds class to make modal hidden again
+					dataModal.classList.add('modal-hidden');
 
-                // Triggers class to reveal modal
-                dataModal.classList.remove('modal-hidden');
+					// Resets class name for close button
+					this.className = '';
+				});
 
-                // Adds an event listener to check for when the user clicks the close button
-                closeButton.addEventListener('click', function () {
+				// Checks if current image clicked is at index 0, 4, or 8 to set to fire sign
+				if (i === 0 || i === 4 || i === 8) {
+					// Adds class name of fire based on current astrological sign
+					newH.classList.add('fire');
 
-                    // Adds class to make modal hidden again
-                    dataModal.classList.add('modal-hidden');
+					// Adds same styles and class name for button
+					closeButton.classList.add('fire');
 
-                    // Resets class name for close button
-                    this.className = '';
-                });
+					// Checks if current image clicked is at index 1, 5, or 9 to set to earth sign
+				} else if (i === 1 || i === 5 || i === 9) {
+					// Adds class name of earth based on current astrological sign
+					newH.classList.add('earth');
 
-                // Checks if current image clicked is at index 0, 4, or 8 to set to fire sign
-                if (i===0 || i===4 || i===8) {
+					// Adds same styles and class name for button
+					closeButton.classList.add('earth');
 
-                    // Adds class name of fire based on current astrological sign
-                    newH.classList.add('fire');
+					// Checks if current image clicked is at index 2, 6, or 10 to set to air sign
+				} else if (i === 2 || i === 6 || i === 10) {
+					// Adds class name of air based on current astrological sign
+					newH.classList.add('air');
 
-                    // Adds same styles and class name for button
-                    closeButton.classList.add('fire');
+					// Adds same styles and class name for button
+					closeButton.classList.add('air');
 
-                // Checks if current image clicked is at index 1, 5, or 9 to set to earth sign
-                } else if (i===1 || i===5 || i===9) {
-                    
-                    // Adds class name of earth based on current astrological sign 
-                    newH.classList.add('earth');
+					// Checks if current image clicked is at index 3, 7, or 11 to set to water sign
+				} else if (i === 3 || i === 7 || i === 11) {
+					// Adds class name of water based on current astrological sign
+					newH.classList.add('water');
 
-                    // Adds same styles and class name for button
-                    closeButton.classList.add('earth');
-
-                // Checks if current image clicked is at index 2, 6, or 10 to set to air sign
-                } else if (i===2 || i===6 || i===10) {
-                    
-                    // Adds class name of air based on current astrological sign
-                    newH.classList.add('air');
-
-                    // Adds same styles and class name for button
-                    closeButton.classList.add('air');
-
-                // Checks if current image clicked is at index 3, 7, or 11 to set to water sign
-                } else if (i===3 || i===7 || i===11) {
-                    
-                    // Adds class name of water based on current astrological sign
-                    newH.classList.add('water');
-
-                    // Adds same styles and class name for button
-                    closeButton.classList.add('water');
-                }
-            }
-        })
-    }
+					// Adds same styles and class name for button
+					closeButton.classList.add('water');
+				}
+			}
+		});
+	}
 }
 
 // =================================================
@@ -246,20 +240,16 @@ function retrieve(data) {
 // =================================================
 // Adds an event listener to to see what key stroke the use presses
 window.addEventListener('keydown', (event) => {
-    // key: "Escape"
-    // keyCode: 27
+	// key: "Escape"
+	// keyCode: 27
 
-    // Checks if the user has hit the escape key
-    if (this.event.keyCode === 27) {
-
-        // We want to avoid duplicates of classes being created
-        // If the classList is currently empty(false) or not hidden
-        if (dataModal.classList.contains('modal-hidden') === false){
-
-            // Then after the user presses escape we want to add the class name to dataModal
-            dataModal.classList.add('modal-hidden');
-
-        };
-    }
+	// Checks if the user has hit the escape key
+	if (this.event.keyCode === 27) {
+		// We want to avoid duplicates of classes being created
+		// If the classList is currently empty(false) or not hidden
+		if (dataModal.classList.contains('modal-hidden') === false) {
+			// Then after the user presses escape we want to add the class name to dataModal
+			dataModal.classList.add('modal-hidden');
+		}
+	}
 });
-
