@@ -13,28 +13,54 @@ body {
 	height: 0;
 	width: 100%;
 	height: 100%;
-	background-attachment: fixed;
+	/* background-attachment: fixed;
+	background-size: cover;
+    background-position: center; */
 	font-family: 'Srisakdi', cursive;
+	/* opacity: 1; */
+}
+
+	/* .space-video {
+		position: fixed;
+		right: 0;
+		bottom: 0;
+		min-width: 100%; 
+		min-height: 100%;
+	}
+	 */
+
+
+.header {
+
+	background: #E6DADA;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to top, #274046, #E6DADA);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to top, #274046, #E6DADA); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	margin-top: -2%;
+	height: 17%;
+	width: 78%;
+	margin: 0 auto;
+	margin-bottom: 2%;
+	border-radius: 15px;
+	opacity: .8;
 }
 
 /* ======================================
 			HEADER
 ====================================== */
-
+h1 {
+	padding-top: 1%;
+	letter-spacing: 5px;
+}
 h1, h4 {
-	color: white;
 	text-align: center;
-	/* background-color: rgba(0, 0, 255, .5); */
-	/* border-radius: 50%; */
-	padding: 10px;
-	margin-left: 10px;
-	margin-right: 10px;
 	max-width: 1399px;
+	color: rgba(0, 0, 0, .7)
 }
 
 h4 {
-	padding: 20px;
+	margin: -2%;
 	font-family: fantasy;
+	letter-spacing: 2px;
 }
 
 /* 
@@ -62,15 +88,6 @@ h4 {
 	-o-transition: all 0.5s ease-out;
 }
 
-/* img {
-	display: flex;
-	margin: 5px auto;
-	height: 110px;
-	width: 110px;
-	color: white;
-	border-radius: 7%;
-} */
-
 img  {
 	display: flex;
 	margin: 5px auto;
@@ -79,7 +96,7 @@ img  {
 	color: white;
 	border-radius: 7%;
 
-    opacity: .8;
+    opacity: .6;
     transform: scale(1);
 	transition: transform .5s, opacity .5s;
 	margin-bottom: 25px; 
@@ -91,12 +108,17 @@ img:hover {
 }
 
 .caption {
-	color: white;
-	background-color: rgba(0, 0, 255, .5);
+	/* color: white; */
+	color: rgba(255, 255, 255, .9);
+  	/* background: -webkit-linear-gradient(to right, #000000, #434343);
+	  background: linear-gradient(to right, #000000, #434343); */
+	  
+	background: -webkit-linear-gradient(to top, #274046ad, rgba(230, 218, 218, 0.164)); 
+	background: linear-gradient(to top, #27404669, rgba(230, 218, 218, 0.192)); 
 	border-radius: 10px;
 	padding: 0 10px;
 	font-size: 10px;
-	opacity: .8;
+	/* opacity: .2; */
 }
 
 /* =================================
@@ -104,14 +126,18 @@ img:hover {
 =================================== */
 
 footer {
-	height: 10%;
+	height: 8%;
 	width: 100%;
-	color: white;
-	background-color: rgba(0, 0, 255, .5);
+	color: rgba(0, 0, 0, .7);
+	font-size: 1.3rem;
+	letter-spacing: 2px;
+	background: -webkit-linear-gradient(to top, #274046, #E6DADA); 
+	background: linear-gradient(to top, #274046, #E6DADA); 
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-top: 20px;
+	margin-top: 25px;
+	opacity: .7;
 }
 
 /* =================================
