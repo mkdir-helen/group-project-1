@@ -14,7 +14,8 @@ const modalTitle = document.createElement('div');
 // Fetched API's & Url
 // ===================
 
-const fetchedNasaApi = fetch('https://api.nasa.gov/planetary/apod?api_key=NsOJtsgXZf2MCfrnp0agtJ0Kr1w3xPcZVLMWM3Hq&date=2018-10-10');
+// const fetchedNasaApi = fetch('https://api.nasa.gov/planetary/apod?api_key=NsOJtsgXZf2MCfrnp0agtJ0Kr1w3xPcZVLMWM3Hq&date=2018-10-10');
+const fetchedNasaApi = fetch('https://api.nasa.gov/planetary/apod?api_key=NsOJtsgXZf2MCfrnp0agtJ0Kr1w3xPcZVLMWM3Hq');
 const fetchedAstroUrl = fetch('http://my-little-cors-proxy.herokuapp.com/https://zodiacal.herokuapp.com/api');
 const fetchedAdviceApi = fetch('http://api.adviceslip.com/advice');
 
@@ -33,7 +34,7 @@ Promise.all([fetchedNasaApi, fetchedAstroUrl])
     // Returns Modified Values In An Array
     // ===================================
     .then((jsonArray) => {
-        return [jsonArray[1], jsonArray[0].url];
+        return [jsonArray[1], jsonArray[0]];
     })
 
     // =================================================================================================
@@ -48,16 +49,17 @@ Promise.all([fetchedNasaApi, fetchedAstroUrl])
 // ==============================================
 // Function That Appends Background Image To Body
 // ==============================================
-function appendImageToBody(image) {
-    let spaceVideo = document.createElement('iframe');
-    // let source = document.createElement('source');
-    // spaceVideo.appendChild(source);
-    spaceVideo.src = image;
-    spaceVideo.width = '560';
-    spaceVideo.height = '315';
-    let videoDiv = document.createElement('div');
-    videoDiv.appendChild(spaceVideo);
-    document.body.appendChild(videoDiv);
+function appendImageToBody(astroData) {
+    //Check to see if source is image and not a video
+    if(astroData.media_type==='image'){
+        document.body.style.backgroundImage = `url(${astroData.url})`;
+    //If the source is video, make image source a default image    
+    }else{
+        document.body.style.backgroundImage = `url("https://apod.nasa.gov/apod/image/1810/HyperionGalaxies_ESO_1080.jpg")`;
+    }
+    console.log(astroData);
+    // media_type
+    
 }
 
 // var video = document.createElement('video');
