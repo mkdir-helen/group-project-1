@@ -13,7 +13,8 @@ const modalTitle = document.createElement('div');
 // ===================
 // Fetched API's & Url
 // ===================
-const fetchedNasaApi = fetch('https://api.nasa.gov/planetary/apod?api_key=NsOJtsgXZf2MCfrnp0agtJ0Kr1w3xPcZVLMWM3Hq');
+
+const fetchedNasaApi = fetch('https://api.nasa.gov/planetary/apod?api_key=NsOJtsgXZf2MCfrnp0agtJ0Kr1w3xPcZVLMWM3Hq&date=2018-10-10');
 const fetchedAstroUrl = fetch('http://my-little-cors-proxy.herokuapp.com/https://zodiacal.herokuapp.com/api');
 const fetchedAdviceApi = fetch('http://api.adviceslip.com/advice');
 
@@ -48,8 +49,35 @@ Promise.all([fetchedNasaApi, fetchedAstroUrl])
 // Function That Appends Background Image To Body
 // ==============================================
 function appendImageToBody(image) {
-    document.body.style.backgroundImage = `url(${image})`;
+    let spaceVideo = document.createElement('iframe');
+    // let source = document.createElement('source');
+    // spaceVideo.appendChild(source);
+    spaceVideo.src = image;
+    spaceVideo.width = '560';
+    spaceVideo.height = '315';
+    let videoDiv = document.createElement('div');
+    videoDiv.appendChild(spaceVideo);
+    document.body.appendChild(videoDiv);
 }
+
+// var video = document.createElement('video');
+// function appendVideoToBody(element, src) {
+//     var source = document.createElement('source');
+ 
+//     source.src = src;
+//     // source.type = type;
+ 
+//     // element.appendChild(source);
+//     element.setAttribute('src', src);
+//     document.body.appendChild(element);
+//  }
+ 
+ 
+// // console.log(updated);
+ 
+//  appendImageToBody(video, "https://www.youtube.com/embed/hQFEHH5E69s");
+ 
+
 
 
 // =================================================
