@@ -62,26 +62,6 @@ function appendImageToBody(astroData) {
     
 }
 
-// var video = document.createElement('video');
-// function appendVideoToBody(element, src) {
-//     var source = document.createElement('source');
- 
-//     source.src = src;
-//     // source.type = type;
- 
-//     // element.appendChild(source);
-//     element.setAttribute('src', src);
-//     document.body.appendChild(element);
-//  }
- 
- 
-// // console.log(updated);
- 
-//  appendImageToBody(video, "https://www.youtube.com/embed/hQFEHH5E69s");
- 
-
-
-
 // =================================================
 // Function For Major Dom Manipulation Functionality
 // =================================================
