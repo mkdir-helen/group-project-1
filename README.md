@@ -22,7 +22,7 @@ For our group project we built an astrological website.<br> The functionality of
  </ol>
  
   
-<h2>Challenge Extended/ Challenge Accepted/ Challenge Resolved:</h2>
+<h2>Challenge Extended ... Challenge Accepted</h2>
   <ol><li>The API call that creates the background image is to Nasa's Astrological Picture of the Day. However, sometimes the 'image' of the day is a video! ... We did some experimentation with making the video run as the background. We got pretty far with it, but ultimately didn't have enough time to make sure it was bug-free, so instead our solution was to have the image be a default image instead of a video if the API call came back as a video.</li>
   <li>Working through the Promise and Promise All and then having to make the data coming out of that each do its own thing. ... We ended up having to pull one of the API calls back out of the Promise All, because we needed it to fetch multiple times.</li>
  <li>Working on making the internal modal colors change depending on what element they are. ... Had to use .this for the colors. </li>
