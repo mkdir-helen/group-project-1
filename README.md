@@ -1,6 +1,6 @@
 <h1>Your Lucky Website </h1>
-<h3>First DigitalCrafts' Group Project </h3>
-<h3> by Clare Barton, April Copes, Helen Harris, Helen Hasegawa  </h3>
+<h3>First DigitalCrafts Group Project </h3>
+<h3>by Clare Barton, April Copes, Helen Harris, & Helen Hasegawa  </h3>
 
 For our group project we built an astrological website.<br> The functionality of the site is to have a daily changing astronomy image background, provide astrological data, and a randomly retrieved piece of advice.<br> Our main focus was to implement all the things we've learned so far in the class. These include but are not limited to:
  - git and gitHub
@@ -8,18 +8,18 @@ For our group project we built an astrological website.<br> The functionality of
  - responsive CSS
  - front-end functionality
  - DOM manipulation
- - Promise/ Promise
+ - Promise/ Promise All
  - teamwork
  - confidence in writing code from scratch
  
  <h2>The technical parts of the site include:</h2>
- <ol><li>3 API calls to Nasa, Zodiac info, and random advice generator.</li>
+ <ul><li>3 API calls to Nasa, Zodiac info, and random advice generator.</li>
  <li>One of the API calls brings back an image which is the background image of the page.</li>
  <li>The results of the other 2 API calls are seen in a modal, which is opened by clicking on one of the thumbnail images. The modal is closed by tapping escape on the keyboard or clicking close.</li>
  <li>From the zodiac API we bring back 9 different parts of the data, some of which are in arrays and some of which are in objects.</li>
  <li>The thumbnail images react on hover.</li>
  <li>The site is responsive with 5 different breakpoints.</li>
- </ol>
+ </ul>
  
   
 <h2>Challenge Extended ... Challenge Accepted</h2>
