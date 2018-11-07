@@ -64,10 +64,13 @@ ZODIAC TILES
 ================================== */
 
 .imagecontainer {
-	display: flex;
+	/* display: flex;
 	flex-wrap: wrap;
 	justify-content: space-around;
-	align-items: center;
+	align-items: center; */
+	display: grid;
+	grid-template-columns: 25% 25% 25% 25%;
+	/* grid-template-columns: repeat(4, 1fr); */
 	margin: 30px auto 0 auto;
 	max-width: 1399px;
 }

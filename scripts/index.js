@@ -14,8 +14,8 @@ const modalTitle = document.createElement('div');
 // Fetched API's & Url
 // ===================
 
-// const fetchedNasaApi = fetch('https://api.nasa.gov/planetary/apod?api_key=NsOJtsgXZf2MCfrnp0agtJ0Kr1w3xPcZVLMWM3Hq&date=2018-10-10');
-const fetchedNasaApi = fetch('https://api.nasa.gov/planetary/apod?api_key=NsOJtsgXZf2MCfrnp0agtJ0Kr1w3xPcZVLMWM3Hq');
+const fetchedNasaApi = fetch('https://api.nasa.gov/planetary/apod?api_key=NsOJtsgXZf2MCfrnp0agtJ0Kr1w3xPcZVLMWM3Hq&date=2018-10-10');
+// const fetchedNasaApi = fetch('https://api.nasa.gov/planetary/apod?api_key=NsOJtsgXZf2MCfrnp0agtJ0Kr1w3xPcZVLMWM3Hq');
 const fetchedAstroUrl = fetch('http://my-little-cors-proxy.herokuapp.com/https://zodiacal.herokuapp.com/api');
 const fetchedAdviceApi = fetch('http://api.adviceslip.com/advice');
 
@@ -55,7 +55,8 @@ function appendImageToBody(astroData) {
         document.body.style.backgroundImage = `url(${astroData.url})`;
     //If the source is video, make image source a default image    
     }else{
-        document.body.style.backgroundImage = `url("https://apod.nasa.gov/apod/image/1810/HyperionGalaxies_ESO_1080.jpg")`;
+        // document.body.style.backgroundImage = `url("https://apod.nasa.gov/apod/image/1810/HyperionGalaxies_ESO_1080.jpg")`;
+        document.body.style.backgroundImage = `url("https://apod.nasa.gov/apod/image/1811/ngc6188TianLee1024.jpg")`;
     }
     console.log(astroData);
     // media_type
