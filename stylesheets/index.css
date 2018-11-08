@@ -71,14 +71,17 @@ ZODIAC TILES
 	display: grid;
 	grid-template-columns: 25% 25% 25% 25%;
 	/* grid-template-columns: repeat(4, 1fr); */
+	/* grid-auto-rows: minmax(30%, auto); */
+	/* grid-column-gap: 5%; */
 	margin: 30px auto 0 auto;
 	max-width: 1399px;
 }
 
 .thumbnail {
+	outline: 1px solid red;
 	padding: 5px 5px 0px 5px;
 	text-align: center;
-	margin: auto 10px 20px 10px;
+	/* margin: auto 10px 20px 10px; */
 	transition: all 0.5s ease-out;
 	-webkit-transition: all 0.5s ease-out;
 	-moz-transition: all 0.5s ease-out;
@@ -87,6 +90,7 @@ ZODIAC TILES
 }
 
 img  {
+
 	display: flex;
 	margin: 5px auto;
 	height: 110px;
