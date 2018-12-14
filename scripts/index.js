@@ -6,8 +6,8 @@ const dataModal = document.querySelector('[data-modal]');
 const thumbnail = document.querySelectorAll('.thumbnail');
 const modalContents = document.querySelector('[data-modal-contents]');
 const closeButton = document.querySelector('#close');
-const modalHeaderClare = document.createElement('div');
-const modalHeaderMelon = document.createElement('div');
+const modalAdvice = document.createElement('div');
+const modalHeaderTitle = document.createElement('div');
 const modalTitle = document.createElement('div');
 
 // ===================
@@ -89,7 +89,7 @@ function retrieve(data) {
                 function changeAdvice(dailyAdvice) {
 
                     // Resets inner.HTML every time user clicks on new astrology sign
-                    modalHeaderClare.innerHTML = '';
+                    modalAdvice.innerHTML = '';
 
                     // Creates a new empty paragraph
                     const advice = document.createElement('p');
@@ -101,14 +101,14 @@ function retrieve(data) {
                     advice.setAttribute('class', 'advice');
 
                     // Appends the modfied result to main div
-                    modalHeaderClare.appendChild(advice);
+                    modalAdvice.appendChild(advice);
                 }
 
                 // Each time through the loop we reset the inner.html
                 modalContents.innerHTML = '';
                 
                 // Reset the div that contains the title for the modal
-                modalHeaderMelon.innerHTML = '';
+                modalHeaderTitle.innerHTML = '';
 
                 // Creates an array with the elements traits
                 let titles = ['Element',
@@ -141,13 +141,13 @@ function retrieve(data) {
                 newH.textContent = data[i].name;
                 
                 // Appends the name of our astrological sign to the header
-                modalHeaderMelon.appendChild(newH);
-                modalHeaderMelon.setAttribute('class', 'modalTitle');
-                modalTitle.appendChild(modalHeaderMelon);
+                modalHeaderTitle.appendChild(newH);
+                modalHeaderTitle.setAttribute('class', 'modalTitle');
+                modalTitle.appendChild(modalHeaderTitle);
 
                 // Creates a header to hold the header and advice slip
-                modalHeaderClare.setAttribute('class', 'modalHeader');
-                modalTitle.appendChild(modalHeaderClare);
+                modalAdvice.setAttribute('class', 'modalHeader');
+                modalTitle.appendChild(modalAdvice);
                 modalContents.appendChild(modalTitle);
 
                 // Loops through our titles/astrological traits

@@ -120,15 +120,34 @@ footer {
 	height: 8%;
 	width: 100%;
 	color: rgba(0, 0, 0, .7);
-	font-size: 1.3rem;
+	font-size: 0.3rem;
 	letter-spacing: 2px;
 	background: -webkit-linear-gradient(to top, #274046, #E6DADA); 
 	background: linear-gradient(to top, #274046, #E6DADA); 
-	display: flex;
-	justify-content: center;
+	/* display: flex; */
+	/* flex-direction: column;
+	justify-content: space-around; */
 	align-items: center;
-	margin-top: 25px;
+	/* margin: 0; */
 	opacity: .7;
+}
+footer p{
+	text-align: center;
+}
+footer p:first-child {
+	padding-top: 5px;
+	margin-bottom: 0;
+}
+footer p:nth-child(2){
+	line-height: 1%;
+}
+footer p a{
+	text-decoration: none;
+	color: black;
+}
+footer p a:hover, footer p a:active {
+	color: silver;
+	cursor: pointer;
 }
 
 /* ================================
@@ -286,10 +305,16 @@ MEDIA QUERIES
 	p {
 		font-size: 18px;
 	}
+	footer p{
+		font-size: 12px;
+	}
+	
 	h2 {
 		font-size: 2.5em;
-		margin-bottom: 7%;
+		/* margin-bottom: 7%; */
+		margin-top: 0;
 		height: 40%;
+		padding-bottom: 40%;
 	}
 	button {
 		font-size: 1em;
@@ -322,6 +347,9 @@ MEDIA QUERIES
 			width: 82%;
 			left: 9%;
 			top: 20%;
+		}
+		footer p{
+			font-size: 14px;
 		}
 		h1 {
 			font-size: 2.0em;
